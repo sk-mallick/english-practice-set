@@ -1,0 +1,12 @@
+[
+  { "q": "Only one of the boys ________ not done the home-work given yesterday.", "options": ["have", "had", "can", "could"], "answer": 1 },
+  { "q": "It is time we ________ with determination.", "options": ["act", "acted", "have acted", "will act"], "answer": 1 },
+  { "q": "When the thief entered the house, the inmates ________ in the hall.", "options": ["were sleeping", "slept", "were slept", "had been sleeping"], "answer": 0 },
+  { "q": "The thief explained how he ________ from the jail.", "options": ["escapes", "had escaped", "escaped", "has escaped"], "answer": 1 },
+  { "q": "They did not know where they ________ from.", "options": ["come", "had come", "has come", "had came"], "answer": 1 },
+  { "q": "Madhu has not been able to recall where ________", "options": ["does she live", "she lived", "did she live", "lived the girl"], "answer": 1 },
+  { "q": "When he died, Ramanujan ________ behind 3 notebooks.", "options": ["was leaving", "had left", "leave", "leaves"], "answer": 1 },
+  { "q": "All the applicants ________ and the results will be announced next week.", "options": ["rank", "are to rank", "are to be ranked", "are ranking"], "answer": 2 },
+  { "q": "Tourists always enjoyed ________ the setting Sun in the Darjeeling hills.", "options": ["to watch", "watching", "in seeing", "seeing"], "answer": 1 },
+  { "q": "Ramappa ________ as the mayor of the town and he will assume charge this Friday.", "options": ["elects", "has been elected", "is elected", "is electing"], "answer": 1 }
+]
