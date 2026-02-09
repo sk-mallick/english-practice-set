@@ -203,7 +203,8 @@ export function injectHeader(title, subtitle) {
                             <span class="sm:hidden text-lg">⚙</span>
                             <span class="hidden sm:inline">TOOLS</span>
                         </span>
-                        <svg class="h-3.5 w-3.5 sm:h-5 sm:w-5 text-slate-400 group-hover:text-blue-400 transition-transform duration-300" id="menu-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <!-- CHANGED: Added 'hidden sm:block' to hide arrow on mobile -->
+                        <svg class="hidden sm:block h-3.5 w-3.5 sm:h-5 sm:w-5 text-slate-400 group-hover:text-blue-400 transition-transform duration-300" id="menu-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg>
                     </button>
@@ -328,8 +329,8 @@ export function injectMenu(currentSet, activeSets, onSetClick, onFilter, onRando
                         <span>GENERATE</span>
                     </button>
                 </div>
-                <!-- RESTORED HELPER TEXT -->
-                <p class="text-[10px] md:text-xs text-slate-500 font-medium leading-relaxed">
+                <!-- CHANGED: Added 'hidden md:block' to hide on mobile -->
+                <p class="hidden md:block text-[10px] md:text-xs text-slate-500 font-medium leading-relaxed">
                     Generates a unique test from the entire pool of questions. Options are automatically shuffled.
                 </p>
             </div>

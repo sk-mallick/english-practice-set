@@ -49,7 +49,6 @@ function setupMenu() {
             displayQuestions = shuffled.slice(0, c);
             render();
             closeMenu();
-            // Generates a unique test from the entire pool of questions. Options are automatically shuffled.
         }
     );
 }
@@ -66,7 +65,8 @@ function render() {
         const displayNum = i + 1;
 
         const card = document.createElement('div');
-        card.className = "bg-[#1e293b] rounded-xl border border-slate-700/50 shadow-lg overflow-hidden break-inside-avoid inline-block w-full mb-4";
+        // CHANGED: Reduced 'mb-4' to 'mb-1' to tighten spacing
+        card.className = "bg-[#1e293b] rounded-xl border border-slate-700/50 shadow-lg overflow-hidden break-inside-avoid inline-block w-full mb-1";
         card.setAttribute('data-answered', 'false');
         
         const qContent = document.createElement('div');

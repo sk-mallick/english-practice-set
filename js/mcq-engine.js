@@ -1,6 +1,6 @@
 import { Sound, Effects, injectHeader, injectFooter, injectMenu, getParams, discoverSets } from './ui.js';
 
-let allQuestions = []; 
+let allQuestions = [];
 let displayQuestions = [];
 let currentSetId = 1;
 let availableSets = [1];
@@ -77,7 +77,8 @@ function render() {
         const newAnswerIndex = opts.findIndex(o => o.text === correctText);
 
         const card = document.createElement('div');
-        card.className = "bg-[#1e293b] rounded-xl md:rounded-2xl shadow-2xl border-2 border-slate-700 overflow-hidden break-inside-avoid mb-6";
+        // CHANGED: Reduced 'mb-6' to 'mb-4' for better density
+        card.className = "bg-[#1e293b] rounded-xl md:rounded-2xl shadow-2xl border-2 border-slate-700 overflow-hidden break-inside-avoid mb-4";
         card.setAttribute('data-answered', 'false');
 
         const header = document.createElement('div');
@@ -126,10 +127,10 @@ function handleAnswer(btn, index, correctIndex, container, card) {
         if (badge) {
             badge.className = "inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-black mr-3 shrink-0 border border-white text-white bg-transparent";
         }
-        
+
         // Mark as answered (optional for logic, but doesn't block interaction now)
         card.setAttribute('data-answered', 'true');
-        
+
         Sound.playCorrect();
         Effects.triggerConfetti();
 
@@ -143,7 +144,7 @@ function handleAnswer(btn, index, correctIndex, container, card) {
         if (badge) {
             badge.className = "inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-black mr-3 shrink-0 border border-white text-white bg-transparent";
         }
-        
+
         // NOTE: We do NOT disable the button. 
         // User can retry or mis-click again (classroom behavior).
         Sound.playWrong();
