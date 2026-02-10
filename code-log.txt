@@ -1,0 +1,873 @@
+
+You said:
+{ "q": "What time ______ the plane leave?", "options": ["Does", "Do", "Is", "Have"], "answer": 0 },
+{ "q": "The United States ______ a big navy.", "options": ["Has", "Have", "Are", "Is"], "answer": 0 },
+{ "q": "I ______ writing a book.", "options": ["Will", "Am", "Was", "---"], "answer": 1 },
+{ "q": "We should not ______ trouble there for you.", "options": ["Had", "Been", "Being", "Be"], "answer": 3 },
+{ "q": "We ______ students. We are teachers.", "options": ["Is not", "Are not", "Be is", "Be not"], "answer": 1 },
+{ "q": "I really like fish but I ______ care for meat.", "options": ["Was", "Is", "Don’t", "Weren’t"], "answer": 2 },
+{ "q": "I’m working right now, ______ you?", "options": ["Will", "Isn’t", "Aren’t", "Am not"], "answer": 2 },
+{ "q": "I realized that I ______ learnt anything.", "options": ["Didn’t", "Wasn’t", "Hadn’t", "Don’t"], "answer": 2 },
+{ "q": "Mukesh is ill. He ______ in bed.", "options": ["Are", "Be", "Not", "Is"], "answer": 3 },
+{ "q": "Why ______ we go out for dinner tonight?", "options": ["Don’t", "Are", "Shall", "Do"], "answer": 0 },
+{ "q": "They ______ enjoy wasting time.", "options": ["Don’t", "Aren’t", "Haven’t", "Doesn’t"], "answer": 0 },
+{ "q": "You wouldn’t be interested in a game of chess, ______ you?", "options": ["Wouldn’t", "Weren’t", "Are", "Would"], "answer": 3 },
+{ "q": "They ______ finished the job.", "options": ["Was", "Had", "Has", "Have"], "answer": 3 },
+{ "q": "______ you open the door?", "options": ["Should", "Would", "Could", "Can"], "answer": 3 },
+{ "q": "She ______ come yet, we’re still waiting for her.", "options": ["Had", "Haven’t", "Hadn’t", "Hasn’t"], "answer": 3 },
+{ "q": "______ you like chocolate?", "options": ["Are", "Can", "Do", "Did"], "answer": 2 },
+{ "q": "______ she hungry?", "options": ["Have", "Are", "Am", "Is"], "answer": 3 },
+{ "q": "Long ago, there ______ a king named Dashrath.", "options": ["Was", "Has", "Are", "Is"], "answer": 0 },
+{ "q": "Unless you hurry up, we ______ miss the bus.", "options": ["Are", "Will", "Is going to", "Won’t"], "answer": 1 },
+{ "q": "We ______ a function at home. Please do come in.", "options": ["Had", "Have had", "Are having", "Having"], "answer": 2 },
+{ "q": "I am not hungry. I ______ thirsty.", "options": ["Is", "They", "Are", "Am"], "answer": 3 },
+{ "q": "______ you help me with this homework?", "options": ["Could", "Are", "Do", "Would"], "answer": 3 },
+{ "q": "Tara ______ called yet; she’s late as usual.", "options": ["Hasn’t", "Are", "Were", "Has"], "answer": 0 },
+{ "q": "Steve ______ cold.", "options": ["Are not", "Is that", "Are it", "Is not"], "answer": 3 },
+{ "q": "Everyone ran as fast as he ______.", "options": ["Will", "Could", "May", "Can"], "answer": 1 },
+{ "q": "Everybody ______ leaving now.", "options": ["That", "Are", "Is", "Am"], "answer": 2 },
+{ "q": "Will the twins play baseball this season?", "options": ["This season", "Will", "Play", "Baseball"], "answer": 1 },
+{ "q": "Schools ______ closed today.", "options": ["Are", "They", "Is", "That"], "answer": 0 },
+{ "q": "If you ______ told me, I would have never found out.", "options": ["Hasn’t", "Didn’t", "Weren’t", "Hadn’t"], "answer": 3 },
+{ "q": "The reference ______ presided by him.", "options": ["Are", "Am called", "Were", "Was"], "answer": 3 },
+{ "q": "You wouldn’t be interested in a game of chess, ______ you?", "options": ["Weren’t", "Wouldn’t", "Are", "Would"], "answer": 3 },
+{ "q": "Chelsea has watched that movie seven times.", "options": ["Watched", "Has", "Seven", "Times"], "answer": 1 },
+{ "q": "I looked everywhere for my glasses but I ______ find them anywhere.", "options": ["Couldn’t", "Could", "Can’t", "Can"], "answer": 0 },
+{ "q": "______ they at school?", "options": ["Isn’t", "Are", "Is", "Am"], "answer": 1 },
+{ "q": "Neither she nor I ______ to be blamed for the mistake.", "options": ["Are", "Were", "Am", "Is"], "answer": 2 },
+{ "q": "I ______ purchased a new pair of shoes to replace the ones that were lost in my luggage.", "options": ["Were", "Was", "Have", "Has"], "answer": 2 },
+{ "q": "______ Sam write all his own reports?", "options": ["Do", "Are", "Did", "Does"], "answer": 3 },
+{ "q": "We hope you ______ have an accident on your way to school.", "options": ["Didn’t", "Do", "Are", "Don’t"], "answer": 3 },
+{ "q": "She ______ thinking very clearly when she had the accident.", "options": ["Didn’t", "Don’t", "Wasn’t", "Weren’t"], "answer": 2 },
+{ "q": "I ______ come with you now because I’m studying for my test.", "options": ["Could", "Can", "Couldn’t", "Can’t"], "answer": 3 },
+{ "q": "Terry ______ writing an e - mail to a client at the moment.", "options": ["Was", "Are", "Were", "Is"], "answer": 3 },
+{ "q": "If he ______ arrive on time, he’ll have to take a later flight.", "options": ["Was", "Doesn’t", "Don’t", "Is"], "answer": 1 },
+{ "q": "She ______ have finished the work by the time you get back.", "options": ["Had", "Will", "Is", "Does"], "answer": 1 },
+{ "q": "______ you had lunch yet?", "options": ["Did", "Will", "Have", "Has"], "answer": 2 },
+{ "q": "Neither the teacher nor the students ______ in the school.", "options": ["Am", "Is", "Was", "Are"], "answer": 3 },
+{ "q": "______ the teacher explain this properly?", "options": ["Did", "Was", "Have", "Had"], "answer": 0 },
+{ "q": "I think he ______ fever and is shivering.", "options": ["Had", "Have", "May", "Has"], "answer": 3 },
+{ "q": "How ______ you do this?", "options": ["Had", "Does", "Did", "Have"], "answer": 2 },
+{ "q": "The bed ______ made as soon as I got up.", "options": ["Were", "Is", "Was", "Wasn’t"], "answer": 2 },
+{ "q": "He ______ done the work.", "options": ["Is", "Has", "Had", "Have"], "answer": 1 },
+{ "q": "The secretaries ______ written all the letters yet.", "options": ["Has not", "Don’t", "Haven’t", "Had not"], "answer": 2 },
+{ "q": "______ it a car?", "options": ["Am", "This", "Is", "Are"], "answer": 2 },
+{ "q": "Mercedes cars ______ made in Germany.", "options": ["Was", "Are", "Is", "Were"], "answer": 1 },
+{ "q": "If you practice a little more, you ______ perfect the art.", "options": ["Will", "Would", "Could", "Should"], "answer": 0 },
+{ "q": "Peter ______ waiting long when she arrived.", "options": ["Won’t be", "Hadn’t been", "Wasn’t", "Hasn’t been"], "answer": 1 },
+{ "q": "I ______ ten years old.", "options": ["Are", "Am", "Is", "They"], "answer": 1 },
+{ "q": "______ you going to travel to London.", "options": ["Have", "Where", "Will", "Are"], "answer": 3 },
+{ "q": "There ______ plenty of mangoes in the house.", "options": ["Is", "Had", "Are", "Was"], "answer": 2 },
+{ "q": "Tell me, ______ you coming to the party?", "options": ["Do", "Is", "Are", "Did"], "answer": 2 },
+{ "q": "Ann and I ______ good friends.", "options": ["That", "Are", "Aren’t", "Am"], "answer": 1 },
+{ "q": "Carlos has broken six - city records in track and field so far.", "options": ["Broken", "Far", "So", "Has"], "answer": 3 },
+{ "q": "Tyler did not study for the test yet.", "options": ["Not", "Yet", "Study", "Did"], "answer": 3 },
+{ "q": "The students ______ allowed to go off campus during school hours.", "options": ["Didn’t", "Aren’t", "Wouldn’t", "Don’t"], "answer": 1 },
+{ "q": "We ______ sitting on the beach this time next week.", "options": ["Will have", "Are", "Will be", "Are going to"], "answer": 2 },
+{ "q": "I ______ like to watch TV. There is a good film on it.", "options": ["Should", "Will", "Would", "Am"], "answer": 2 },
+{ "q": "They ______ get there on time.", "options": ["Might", "Must", "Will", "Were"], "answer": 1 },
+{ "q": "Steve ______ ill.", "options": ["At", "They", "Is", "Are"], "answer": 2 },
+{ "q": "______ they not discuss politics?", "options": ["Have", "Does", "Do", "Had"], "answer": 2 },
+{ "q": "What ______ they doing when you came in?", "options": ["Did", "Are", "Were", "Was"], "answer": 2 },
+{ "q": "Jeremy ______ want to go to the movies; he wants to stay home instead.", "options": ["Doesn’t", "Hasn’t", "Wasn’t", "Isn’t"], "answer": 0 },
+{ "q": "I ______ appreciate his jokes. They weren’t funny.", "options": ["Didn’t", "Did", "Haven’t", "Have"], "answer": 0 },
+{ "q": "She ______ finished lunch by the time he arrived.", "options": ["Did", "Was", "Has", "Had"], "answer": 3 },
+{ "q": "I ______ see you tomorrow.", "options": ["Will", "Do", "Am", "Going to"], "answer": 0 },
+{ "q": "She ______ thinking very clearly when she had the accident.", "options": ["Don’t", "Wasn’t", "Weren’t", "Didn’t"], "answer": 1 },
+{ "q": "Your books ______ on the table.", "options": ["Are", "Be", "Is", "Be not"], "answer": 0 },
+{ "q": "I ______ my work before he came.", "options": ["Had finished", "Finished", "Finishes", "Will finish"], "answer": 0 },
+{ "q": "We ______ educate our children.", "options": ["May", "Might", "Must", "Could"], "answer": 2 },
+{ "q": "Sorry, you can’t borrow my pencil. I ______ it myself.", "options": ["Was using", "Use", "Using", "Am using"], "answer": 3 },
+{ "q": "Poonam has a headache so she ______ solve this sum.", "options": ["Should not", "Cannot", "Could not", "Will not"], "answer": 1 },
+{ "q": "The doctors ______ on her successfully on Tuesday after- noon.", "options": ["Operated", "Operate", "Operating", "Operates"], "answer": 0 },
+{ "q": "My friends ______ the prime minister yesterday.", "options": ["Are seeing", "Sees", "Have seen", "Saw"], "answer": 3 },
+{ "q": "The entire audience ______ out in hilarious laughter as she said the punchline.", "options": ["Burst", "Were bursting", "Had burst", "Is bursting"], "answer": 0 },
+{ "q": "She asked him why he ______ sad.", "options": ["Was", "Did", "Could", "Might"], "answer": 0 },
+{ "q": "He was speaking so softly that I ______ a word he was saying!", "options": ["Wasn’t understand", "Couldn’t understand", "Shouldn’t understand", "Wouldn’t understand"], "answer": 1 },
+{ "q": "Why did you not ______ the class yesterday?", "options": ["Attended", "Attends", "Attend", "Attending"], "answer": 2 },
+{ "q": "Tisha often ______ her work and goes to play.", "options": ["Shirks", "Shirked", "Shirk", "Shirking"], "answer": 0 },
+{ "q": "My sister goes to the temple daily but she does not worshipped.", "options": ["My sister goes", "To temple daily", "Worshipped", "But she does not"], "answer": 2 },
+{ "q": "A believer smiles in public and ______ in private.", "options": ["Weeps", "Weep", "Weeping", "Wept"], "answer": 0 },
+{ "q": "It ______ drizzling throughout the previous day.", "options": ["Kept", "Keeps", "Keeping", "Keep"], "answer": 0 },
+{ "q": "How many students in your class ______ from Korea?", "options": ["Come", "Are coming", "Comes", "Came"], "answer": 0 },
+{ "q": "The lamp has ______ out.", "options": ["Going", "Went", "Gone", "Will go"], "answer": 2 },
+{ "q": "Babies ______ when they are hungry.", "options": ["Are crying", "Cries", "Cried", "Cry"], "answer": 3 },
+{ "q": "For his novelty, the gift ordered to me ______ very lovely.", "options": ["Were", "Am", "Was", "Are"], "answer": 2 },
+{ "q": "He heard the train ______ coming.", "options": ["Is", "Were", "Was", "Will"], "answer": 2 },
+{ "q": "As long as he lived, he always ______ by the law.", "options": ["Abide", "Obey", "Abided", "Abiding"], "answer": 2 },
+{ "q": "I wish, I ______ rich.", "options": ["Being", "Are", "Is", "Were"], "answer": 3 },
+{ "q": "We ______ to the new house because the old house was small enough for our family.", "options": ["Shifted", "Shifts", "Are shifted", "Is shifted"], "answer": 0 },
+{ "q": "Why ______ he call his reflection an ugly idol?", "options": ["Do", "Be", "Did", "Doing"], "answer": 2 },
+{ "q": "Government ______ to provide quality health care to the people.", "options": ["Will committed", "Is committed", "Commit", "Committing"], "answer": 1 },
+{ "q": "Their flight may ______ of at around half an hour, weather permitted.", "options": ["Taken", "Take", "Took", "Is taking"], "answer": 1 },
+{ "q": "You ______ abide by office rules.", "options": ["Are must", "Must", "Did must", "Does must"], "answer": 1 },
+{ "q": "Everybody ______ for the arrival of the US President very eagerly.", "options": ["Is waiting", "Waited", "Had waited", "Has been waiting"], "answer": 0 },
+{ "q": "Everybody ______ respect his teacher.", "options": ["Should", "Can", "Will", "Could"], "answer": 0 },
+{ "q": "I ______ for my pen. Have you seen it?", "options": ["Looking", "Will look", "Am looking", "Look"], "answer": 2 },
+{ "q": "You ______ helped him. He could have done it by himself!", "options": ["Needn’t", "Need have", "Needn’t have", "Must have"], "answer": 2 },
+{ "q": "If you ______ the ice it melts.", "options": ["Heat", "Heats", "Heated", "Heating"], "answer": 0 },
+{ "q": "I ______ shelter in rain under a shady tree.", "options": ["Taken", "Took", "Taking", "Takes"], "answer": 1 },
+{ "q": "You ______ told me it was his birthday. I would have bought him a present.", "options": ["Would have", "Should have", "Might have", "Must have"], "answer": 1 },
+{ "q": "She has ______ (insult) the boy.", "options": ["Insults", "Insult", "Insulting", "Insulted"], "answer": 3 },
+{ "q": "He ______ tea now.", "options": ["Is taking", "Took", "Will take", "Takes"], "answer": 0 },
+{ "q": "How long have you been ______ this material?", "options": ["Prepare", "Preparing", "Prepared", "Prepares"], "answer": 1 },
+{ "q": "He ______ around the filthy room in distaste.", "options": ["Am looks", "Looked", "Is looks", "Looking"], "answer": 1 },
+{ "q": "Riddhi ______ her day with a prayer everyday.", "options": ["Starts", "Starting", "Started", "Start"], "answer": 0 },
+{ "q": "A visitor ______ to India long ago.", "options": ["Came", "Coming", "Comes", "Come"], "answer": 0 },
+{ "q": "She needs to ______ a new mobile.", "options": ["Get", "Had get", "Got", "Have get"], "answer": 0 },
+{ "q": "She ______ me about him, but I was not listening.", "options": ["Telling", "Tell", "Told", "Tells"], "answer": 2 },
+{ "q": "You can keep my phone if you like. I ______ it anymore.", "options": ["Am not using", "Doesn’t use", "Didn’t use", "Don’t use"], "answer": 3 },
+{ "q": "______ many times every winter in Frankfurt.", "options": ["It is snowing", "It snowed", "It is snow", "It snows"], "answer": 3 },
+{ "q": "Sonia ______ a fairy tale.", "options": ["Said", "Showed", "Narrated", "Attended"], "answer": 2 },
+{ "q": "As he ______ not satisfied with the answer, he ______ the lesson tomorrow.", "options": ["Was, would repeat", "Is, will repeat", "Is, repeated", "Was, repeated"], "answer": 0 },
+{ "q": "The brave soldier ______ to die for his country.", "options": ["Wanted", "Wants", "Wanting", "Want"], "answer": 0 },
+{ "q": "Why was the science teacher so bad - tempered yesterday? She ______ a headache.", "options": ["Would have", "May have", "May have had", "Would have had"], "answer": 2 },
+{ "q": "He ______ the football.", "options": ["Kicked", "Kicking", "Kicks", "Kick"], "answer": 0 },
+{ "q": "Now he ______ questions to see if the students have un- derstood the lesson.", "options": ["Is asking", "Asked", "Asking", "Ask"], "answer": 0 },
+{ "q": "The flowers ______ smelled pleasantly.", "options": ["Will", "Is", "Am", "Were"], "answer": 3 },
+{ "q": "Few days before my father ______ (buy) a car.", "options": ["Buy", "Bought", "Buys", "Buying"], "answer": 1 },
+{ "q": "There was no other car involved in the accident. He ______ fallen asleep at the wheel.", "options": ["Can’t have", "Should have", "Would have", "Must have"], "answer": 3 },
+{ "q": "He has learned English. Now he ______ talk to anybody.", "options": ["Should", "Can", "May", "Will"], "answer": 1 },
+{ "q": "As long as he lived, he always ______ by the law.", "options": ["Abide", "Abided", "Abides", "Obey"], "answer": 1 },
+{ "q": "Let’s meet for lunch tomorrow. We ______ discuss our holiday plans.", "options": ["Would", "Could", "Can", "Will be able to"], "answer": 2 },
+{ "q": "I think I ______ a new calculator. This one does not work properly anymore.", "options": ["Needed", "Am needing", "Need", "Needs"], "answer": 2 },
+{ "q": "Did you ______ this colour?", "options": ["Chooses", "Will choose", "Choose", "Chose"], "answer": 2 },
+{ "q": "Time and tide ______ for none.", "options": ["Wait", "Waited", "Waiting", "Waits"], "answer": 0 },
+{ "q": "It was so foggy that I ______ my hand in front of the face!", "options": ["Couldn’t see", "Wouldn’t see", "Wasn’t see", "Shouldn’t see"], "answer": 0 },
+{ "q": "Jane ______ her blue jeans today, but usually, she wears a skirt or a dress.", "options": ["Wearing", "Is wearing", "Wears", "Wear"], "answer": 1 },
+{ "q": "Common people ______ the government.", "options": ["Electioned", "Elects", "Elections", "Elect"], "answer": 3 },
+{ "q": "She ______ mike but he did not see her.", "options": ["Would sees", "Seeing", "See", "Saw"], "answer": 3 },
+{ "q": "Many a girl ______ the movie.", "options": ["See", "Have seen", "Are going to see", "Has seen"], "answer": 3 },
+{ "q": "She ______ a dress at a very reasonable rate.", "options": ["Am bring", "Does bought", "Been bring", "Has bought"], "answer": 3 },
+{ "q": "She’s in the hospital with a head injury. She ______ wear her helmet!", "options": ["Would have been", "Could be", "Didn’t", "Must have been"], "answer": 2 },
+{ "q": "He ______ a novel now a days.", "options": ["Wrote", "Will write", "Is writing", "Has written"], "answer": 2 },
+{ "q": "Asha Bhonsle was ______ Life Time Achievement Award in IFFA 2014 in Dubai.", "options": ["Given", "Giving", "Give", "Gave"], "answer": 0 },
+{ "q": "Why ______ the man driving the bus so fast?", "options": ["Is", "Are", "Am", "Were"], "answer": 0 },
+{ "q": "I am not as intelligent as you ______.", "options": ["Is thinking", "Thinks", "Think", "Thought"], "answer": 2 },
+{ "q": "The play ______ an hour.", "options": ["Last", "Lasting", "Lasted", "Lost"], "answer": 2 },
+{ "q": "My father ______ to me every week.", "options": ["Writes", "Will be writing", "Wrote", "Is writing"], "answer": 0 },
+{ "q": "Youvraj Singh an Indian player ______ aggression in his bating style.", "options": ["Show", "Showing", "Shows", "Showed"], "answer": 2 },
+{ "q": "Till today, neither of the two brothers ______ this race.", "options": ["Will run", "Would run", "Has run", "Have run"], "answer": 2 },
+{ "q": "They ______ work hard to get good grades.", "options": ["Might", "Were", "Does", "Should"], "answer": 3 },
+{ "q": "I ______ you are right.", "options": ["Am thinking", "Thought", "Think", "Thinks"], "answer": 2 },
+{ "q": "Nearly all the sports practised nowadays __________ competitive.", "options": ["Error: Is → Correction: Are", "Error: Practised → Correction: Practices", "Error: Nearly → Correction: Really", "Error: Competitive → Correction: Comparable"], "answer": 0 },
+{ "q": "Every student __________ going to be responsible for his chap- ters and each student __________ bring his or her homework on the exam day.", "options": ["Is, have to", "Is, has to", "Are, have to", "Are, will"], "answer": 1 },
+{ "q": "With your cooperation, we __________ win the match.", "options": ["Must", "Shouldn’t", "Ought", "Might"], "answer": 3 },
+{ "q": "The children of the man who works with me __________ broken the window this morning.", "options": ["Have", "Has", "Were", "Had"], "answer": 0 },
+{ "q": "Either the sculpture or the paintings __________ in the museum today.", "options": ["Was", "Is", "Has", "Are"], "answer": 3 },
+{ "q": "Neither the students nor their instructor __________ happy with the long cafeteria line for squid eyeball stew.", "options": ["Were", "Are", "Is", "Was"], "answer": 1 },
+{ "q": "One scorching summer, the desert became dry, and there was no water left for the plants. The rose quickly __________ to wilt.", "options": ["Begin", "Began", "Begins", "Beginning"], "answer": 1 },
+{ "q": "The chance to mentor a group of underprivileged students helped me __________ the educational disparities in our society.", "options": ["May understand", "To understand", "Understanding", "Understood"], "answer": 1 },
+{ "q": "Bread and butter __________ our daily food.", "options": ["Have", "Is", "Has", "Are"], "answer": 1 },
+{ "q": "Summer is an ideal time to take a hike, especially if you __________ the opportunity to explore one of our country’s many state and national parks.", "options": ["Has", "Have", "Will have", "Are having"], "answer": 1 },
+{ "q": "The bouquet of red roses __________ so sweet.", "options": ["Smell", "Smelled", "Smells", "Smelt"], "answer": 2 },
+{ "q": "One of my close friends __________ us a question that neither of us __________ able to answer.", "options": ["Had asked, are", "Has asked, is", "Had asked, can", "Have asked, is"], "answer": 1 },
+{ "q": "None of my friends __________ there.", "options": ["Has", "Were", "Is", "Was"], "answer": 3 },
+{ "q": "The opportunity to volunteer at the local food bank made me __________ the challenges faced by underprivileged com- munities.", "options": ["Realize", "Realizing", "Realized", "To realize"], "answer": 0 },
+{ "q": "Each of the boys __________ rewarded.", "options": ["Was", "Were", "Are being", "Have been"], "answer": 0 },
+{ "q": "Nobody in the classroom __________ able to answer the question about subject - verb agreement yesterday.", "options": ["Was", "Is", "Can", "Were"], "answer": 0 },
+{ "q": "We __________ by the river, but unfortunately, the riverside car park was full.", "options": ["Were going to park", "Should be parking", "Had better park", "Had parked"], "answer": 0 },
+{ "q": "Everybody at the party __________ enjoying the food.", "options": ["Are", "Was", "Were", "Have"], "answer": 1 },
+{ "q": "Few students who __________ playing football missed the class.", "options": ["Had", "Could be", "Were", "Was"], "answer": 2 },
+{ "q": "His offence was grave but he __________ with a fine.", "options": ["Got through", "Got back", "Got off", "Got over"], "answer": 2 },
+{ "q": "After the meeting, he said a great deal of advice __________.", "options": ["Were given", "Has been given", "Had been given", "Have been given"], "answer": 2 },
+{ "q": "One of the books __________ been missing.", "options": ["Has", "Is", "Are", "Have"], "answer": 0 },
+{ "q": "One of the flowers __________ wilted.", "options": ["Were", "Are", "Has", "Have"], "answer": 2 },
+{ "q": "Each of these women __________ that she had read the care instructions before washing the delicate and expensive dresses.", "options": ["Wishes", "Would wish", "Wished", "Wish"], "answer": 2 },
+{ "q": "Neither the man nor his son __________ convinced of the idea.", "options": ["Has", "Was", "Had", "Have"], "answer": 1 },
+{ "q": "Giving a speech in front of such a big crowd who are made up of intellectuals __________ a very difficult action, I suppose.", "options": ["Was", "Is", "Were", "Are"], "answer": 1 },
+{ "q": "The man whom I __________ with __________ the dean of our faculty.", "options": ["Was talking, were", "Was talking, was", "Can talk, were", "Were talking, was"], "answer": 1 },
+{ "q": "The men of the community __________ not support the leader.", "options": ["Do", "Have", "Does", "Is"], "answer": 0 },
+{ "q": "If he __________ early, we __________ catch the last train on time.", "options": ["Will come, will", "Comes, will be able to", "Comes, could be", "Is coming, can"], "answer": 1 },
+{ "q": "Always check the forecast so that you can be prepared for weather changes. Temperature may drop and wind may increase as you __________ higher.", "options": ["Climb", "Climbing", "Climbed", "Will climb"], "answer": 0 },
+{ "q": "This may seem very difficult for you but after the course, any one of our students __________ able to solve such problems, so you will be able to do, too.", "options": ["Are", "Had been", "Were", "Is"], "answer": 3 },
+{ "q": "Many students __________ made the same mistake.", "options": ["Has", "Have", "Is", "Are"], "answer": 1 },
+{ "q": "Neither the shoes nor the bag __________ the dress.", "options": ["Matching", "Match", "Matches", "Matched"], "answer": 2 },
+{ "q": "Finally, she went to the best doctor in town. The doctor spent months on __________ her until she was finally cured.", "options": ["Treats", "Treated", "Treating", "To treating"], "answer": 2 },
+{ "q": "Laurel and Hardy __________ famous comedians.", "options": ["Was", "Have", "Is", "Were"], "answer": 3 },
+{ "q": "The price of the apples __________ very high.", "options": ["Was", "Have", "Were", "Is"], "answer": 0 },
+{ "q": "Here __________ the mail and newspapers that I picked up for you while you were on vacation.", "options": ["Was", "Are", "Is", "Be"], "answer": 1 },
+{ "q": "My visit to the historical museum left me __________ deeply appreciative of our ancestors’ struggles and achievements.", "options": ["Was", "To be", "Been", "Being"], "answer": 3 },
+{ "q": "His brother along with his friends __________ leaving for the stadium.", "options": ["Are", "Were", "Has", "Is"], "answer": 3 },
+{ "q": "The books borrowed from the library __________ on my desk.", "options": ["Are", "Have", "Is", "Has"], "answer": 0 },
+{ "q": "The treasurer and secretary __________ left from the bank.", "options": ["Have", "Is", "Has", "Are"], "answer": 2 },
+{ "q": "Each candidate __________ fill in these forms and sign them.", "options": ["Has to", "Have to", "Are to", "Were to"], "answer": 0 },
+{ "q": "The boy who won the two medals __________ a friend of mine.", "options": ["Is", "Had", "Have", "Are"], "answer": 0 },
+{ "q": "The aim of the course __________ me willing to begin.", "options": ["Makes", "Had been made", "Making", "Make"], "answer": 0 },
+{ "q": "Only when each of the committee members __________ reading the instructions then can you __________ them to the hall.", "options": ["Would finish, took", "Finished, take", "Finishes, take", "Finish, take"], "answer": 2 },
+{ "q": "I don’t know anyone else who __________ to the new theatre production yet.", "options": ["Has been", "Were going", "Are going", "Have been"], "answer": 0 },
+{ "q": "The police __________ to be careful since the criminal was dangerous.", "options": ["Were told", "Was telling", "Was saying", "Was told"], "answer": 0 },
+{ "q": "All the furniture I bought __________ at my home now.", "options": ["Have been", "Is", "Are", "Was"], "answer": 1 },
+{ "q": "Reena always __________ the truth.", "options": ["Speaks", "Will speak", "Speak", "Speaking"], "answer": 0 },
+{ "q": "He and I __________ good friends but now we __________ anymore.", "options": ["Were, aren’t talking", "Am, don’t talking", "Were, won’t talk", "Are, weren’t talking"], "answer": 0 },
+{ "q": "If Joe __________ here, you’d be sorry.", "options": ["Is", "Was", "Has", "Were"], "answer": 3 },
+{ "q": "Two - thirds of the students __________ present at the inaugural function.", "options": ["Being", "Was", "Were", "Is"], "answer": 2 },
+{ "q": "Each of these women __________ that she had read the care instructions before washing the delicate and expensive dresses.", "options": ["Wishes", "Would wish", "Wished", "Wish"], "answer": 2 },
+{ "q": "There __________ more calories in a bowl of chocolate - broccoli breakfast cereal than you might think.", "options": ["Is", "Will be", "Are", "Were"], "answer": 2 },
+{ "q": "The men of the community __________ not support the leader.", "options": ["Do", "Have", "Does", "Is"], "answer": 0 },
+{ "q": "Everybody at the party __________ enjoying the food.", "options": ["Are", "Was", "Were", "Have"], "answer": 1 },
+{ "q": "Giving a speech in front of such a big crowd who are made up of intellectuals __________ a very difficult action, I suppose.", "options": ["Was", "Is", "Were", "Are"], "answer": 1 },
+{ "q": "Neither the students nor their instructor __________ happy with the long cafeteria line for squid eyeball stew.", "options": ["Were", "Are", "Is", "Was"], "answer": 1 },
+{ "q": "Only when each of the committee members __________ reading the instructions then can you __________ them to the hall.", "options": ["Would finish, took", "Finished, take", "Finishes, take", "Finish, take"], "answer": 2 },
+{ "q": "With your cooperation, we __________ win the match.", "options": ["Must", "Shouldn’t", "Ought", "Might"], "answer": 3 },
+{ "q": "All the furniture I bought __________ at my home now.", "options": ["Have been", "Is", "Are", "Was"], "answer": 1 },
+{ "q": "Laurel and Hardy __________ famous comedians.", "options": ["Was", "Have", "Is", "Were"], "answer": 3 },
+{ "q": "Every one of the shirts __________ a green collar.", "options": ["Is", "Are", "Has", "Have"], "answer": 2 },
+{ "q": "Neither she nor I __________ getting the lunch special.", "options": ["Was", "Am", "Are", "Is"], "answer": 1 },
+{ "q": "One of the flowers __________ wilted.", "options": ["Were", "Are", "Has", "Have"], "answer": 2 },
+{ "q": "He and I __________ good friends but now we __________ anymore.", "options": ["Were, aren’t talking", "Am, don’t talking", "Were, won’t talk", "Are, weren’t talking"], "answer": 0 },
+{ "q": "The winning athletes were felicitation by the State Gov- ernment and the City Council.", "options": ["Error: Winning → Correction: Win", "Error: Were → Correction: Was", "Error: Felicitation → Correction: Felicitated", "Error: And → Correction: But"], "answer": 2 },
+{ "q": "I don’t know anyone else who __________ to the new theatre production yet.", "options": ["Has been", "Were going", "Are going", "Have been"], "answer": 0 },
+{ "q": "One of my close friends __________ us a question that neither of us __________ able to answer.", "options": ["Had asked, are", "Has asked, is", "Had asked, can", "Have asked, is"], "answer": 1 },
+{ "q": "World leaders should work to establish peace of the world so that human and economic resources could be used to meet the pressing demands of mankind.", "options": ["Error: Of → Correction: In", "Error: So that → Correction: Although", "Error: Could → Correction: Shall", "Error: Meet → Correction: Met"], "answer": 0 },
+{ "q": "The opportunity to volunteer at the local food bank made me __________ the challenges faced by underprivileged com- munities.", "options": ["Realize", "Realizing", "Realized", "To realize"], "answer": 0 },
+{ "q": "After the meeting, he said a great deal of advice __________.", "options": ["Were given", "Has been given", "Had been given", "Have been given"], "answer": 2 },
+{ "q": "Either Cassie or Marie __________ the employees this afternoon.", "options": ["Paying", "Pays", "Pay", "Payed"], "answer": 1 },
+{ "q": "This may seem very difficult for you but after the course, any one of our students __________ able to solve such problems, so you will be able to do, too.", "options": ["Are", "Had been", "Were", "Is"], "answer": 3 },
+{ "q": "Always check the forecast so that you can be prepared for weather changes. Temperature may drop and wind may increase as you __________ higher.", "options": ["Climb", "Climbing", "Climbed", "Will climb"], "answer": 0 },
+{ "q": "If he __________ early, we __________ catch the last train on time.", "options": ["Will come, will", "Comes, will be able to", "Comes, could be", "Is coming, can"], "answer": 1 },
+{ "q": "The internship at the tech startup had me __________ excited about the potential of innovation and entrepreneurial spirit.", "options": ["Feeling", "Felt", "To feel", "Feels"], "answer": 0 },
+{ "q": "Summer is an ideal time to take a hike, especially if you __________ the opportunity to explore one of our country’s many state and national parks.", "options": ["Has", "Have", "Will have", "Are having"], "answer": 1 },
+{ "q": "Nobody in the classroom __________ able to answer the question about subject - verb agreement yesterday.", "options": ["Was", "Is", "Can", "Were"], "answer": 0 },
+{ "q": "Reena always __________ the truth.", "options": ["Speaks", "Will speak", "Speak", "Speaking"], "answer": 0 },
+{ "q": "None of my friends __________ there.", "options": ["Has", "Were", "Is", "Was"], "answer": 3 },
+{ "q": "Finally, she went to the best doctor in town. The doctor spent months on __________ her until she was finally cured.", "options": ["Treats", "Treated", "Treating", "To treating"], "answer": 2 },
+{ "q": "Although every student in my class __________ the schedule, one of my students always __________ late to the class.", "options": ["Knows, comes", "Knows, coming", "Know, comes", "Know, come"], "answer": 0 },
+{ "q": "Students’ minds __________ about the order of structures.", "options": ["Had confused", "Have been confused", "Has confused", "Have confused"], "answer": 1 },
+{ "q": "The police __________ to have been called by the thieves themselves to the wrong address at the same time of the robbery.", "options": ["Are supposed", "Was supposed", "Supposed", "Is supposed"], "answer": 0 },
+{ "q": "I __________ watching that programme every week since it started.", "options": ["Had", "Has been", "Was been", "Have been"], "answer": 3 },
+{ "q": "A lot of money __________ required to start a new business these days.", "options": ["Were", "Is", "Have", "Are"], "answer": 1 },
+{ "q": "Do you know the boy __________ glasses at the back of the class?", "options": ["Wearing", "Wear", "Wears", "Wore"], "answer": 0 },
+{ "q": "Bread and butter __________ my favourite breakfast.", "options": ["Has been", "Are", "Am", "Is"], "answer": 3 },
+{ "q": "The chance to mentor a group of underprivileged students helped me __________ the educational disparities in our society.", "options": ["May understand", "To understand", "Understanding", "Understood"], "answer": 1 },
+{ "q": "The aim of the course __________ me willing to begin.", "options": ["Makes", "Had been made", "Making", "Make"], "answer": 0 },
+{ "q": "My visit to the historical museum left me __________ deeply appreciative of our ancestors’ struggles and achievements.", "options": ["Was", "To be", "Been", "Being"], "answer": 3 },
+{ "q": "One scorching summer, the desert became dry, and there was no water left for the plants. The rose quickly __________ to wilt.", "options": ["Begin", "Began", "Begins", "Beginning"], "answer": 1 },
+{ "q": "The books borrowed from the library __________ on my desk.", "options": ["Are", "Have", "Is", "Has"], "answer": 0 },
+{ "q": "Now that many employees have shown high productivity working from home, will their bosses hereafter __________ them to take working vacations?", "options": ["Have expected", "Expected", "Expect", "Expecting"], "answer": 2 },
+{ "q": "Every student __________ going to be responsible for his chap- ters and each student __________ bring his or her homework on the exam day.", "options": ["Is, have to", "Is, has to", "Are, have to", "Are, will"], "answer": 1 },
+{ "q": "Most of the milk __________ gone.", "options": ["Have", "Were", "Are", "Is"], "answer": 3 },
+{ "q": "One of the main solutions to such problems __________ to show no reaction to the person in those times.", "options": ["Is", "Supposed", "Were", "Was"], "answer": 0 },
+{ "q": "One of the books __________ been missing.", "options": ["Has", "Is", "Are", "Have"], "answer": 0 },
+{ "q": "Nearly all the sports practised nowadays __________ competitive.", "options": ["Error: Is → Correction: Are", "Error: Practised → Correction: Practices", "Error: Nearly → Correction: Really", "Error: Competitive → Correction: Comparable"], "answer": 0 }
+
+
+
+I HAVE 250 QUESTIONS WRITTEN IN A SET AND I WNAT THAT EACH SDET MUST HAVE 15 QUESTIONA AND SHRE ARE 1 TO 10 TOTAL 15 SETS AND SO HOW CAN I DFO THIS BY CODEING AS AI WNAT 15 QUESTION IN EACH SET
+
+ChatGPT said:
+Got it 👍
+You’ve got ~250 questions (like the JSON objects you shared), and you want to automatically split them into 15 sets, with each set having 15 questions (Set 1 to Set 15).
+
+That’s a perfect job for a small bit of code. I’ll show you the cleanest and simplest way, and you can use it as-is.
+
+First, the math (quick sanity check)
+15 sets × 15 questions = 225 questions
+
+You currently have 250 questions
+
+👉 So 25 questions will be left over.
+You can either:
+
+keep them as a reserve set, or
+
+randomly ignore the extra ones, or
+
+create Set 16 later
+
+The code below handles this neatly.
+
+Option 1: JavaScript (best if your data is already JSON)
+Step 1: Put all questions in one array
+const questions = [
+  { q: "What time ______ the plane leave?", options: ["Does", "Do", "Is", "Have"], answer: 0 },
+  { q: "The United States ______ a big navy.", options: ["Has", "Have", "Are", "Is"], answer: 0 },
+  // ... all 250 questions here
+];
+Step 2: Shuffle the questions (optional but recommended)
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+shuffle(questions);
+Step 3: Split into 15 sets of 15 questions
+const SET_SIZE = 15;
+const TOTAL_SETS = 15;
+
+const sets = [];
+
+for (let i = 0; i < TOTAL_SETS; i++) {
+  sets.push({
+    setNumber: i + 1,
+    questions: questions.slice(i * SET_SIZE, (i + 1) * SET_SIZE)
+  });
+}
+
+console.log(sets);
+✅ Result format
+[
+  {
+    setNumber: 1,
+    questions: [ {q, options, answer}, ...15 items ]
+  },
+  {
+    setNumber: 2,
+    questions: [ ...15 items ]
+  },
+  ...
+]
+Option 2: Python (very simple & clean)
+import random
+
+questions = [
+    {"q": "What time ______ the plane leave?", "options": ["Does", "Do", "Is", "Have"], "answer": 0},
+    {"q": "The United States ______ a big navy.", "options": ["Has", "Have", "Are", "Is"], "answer": 0},
+    # ... all 250 questions
+]
+
+random.shuffle(questions)
+
+SET_SIZE = 15
+TOTAL_SETS = 15
+
+sets = []
+
+for i in range(TOTAL_SETS):
+    set_questions = questions[i*SET_SIZE:(i+1)*SET_SIZE]
+    sets.append({
+        "setNumber": i + 1,
+        "questions": set_questions
+    })
+
+print(sets)
+What happens to extra questions?
+extra_questions = questions[15*15:]
+You can:
+
+save them as backup
+
+or randomly add them later
+
+or make a practice set
+
+Want this next?
+I can:
+
+export each set as separate JSON files
+
+generate PDF / Word question papers
+
+auto-number questions per set
+
+create online test format
+
+or randomize sets every time
+
+Just tell me what you want next 😄
+
+
+You said:
+GIVE TERMINAL CODE TO PERFORM THIS ACTION 
+
+ChatGPT said:
+Perfect 👍
+Here’s ready-to-run TERMINAL code using Python. You can copy-paste this exactly.
+
+✅ STEP 1: Create a Python file from terminal
+nano split_questions.py
+(You can also use vi or any editor.)
+
+✅ STEP 2: Paste this FULL code into the file
+import json
+import random
+
+# ===== LOAD QUESTIONS =====
+# Put your 250 questions into questions.json
+with open("questions.json", "r", encoding="utf-8") as f:
+    questions = json.load(f)
+
+# ===== SHUFFLE QUESTIONS =====
+random.shuffle(questions)
+
+SET_SIZE = 15
+TOTAL_SETS = 15
+
+sets = {}
+
+for i in range(TOTAL_SETS):
+    set_name = f"Set_{i+1}"
+    sets[set_name] = questions[i*SET_SIZE:(i+1)*SET_SIZE]
+
+# ===== SAVE EACH SET AS A FILE =====
+for set_name, qs in sets.items():
+    with open(f"{set_name}.json", "w", encoding="utf-8") as f:
+        json.dump(qs, f, indent=2)
+
+print("✅ DONE: 15 sets created (15 questions each)")
+Save and exit:
+
+CTRL + O → Enter
+
+CTRL + X
+
+✅ STEP 3: Prepare your questions file
+Create a file called questions.json
+
+nano questions.json
+Paste ALL 250 questions as a single JSON array, like this:
+
+[
+  { "q": "What time ______ the plane leave?", "options": ["Does","Do","Is","Have"], "answer": 0 },
+  { "q": "The United States ______ a big navy.", "options": ["Has","Have","Are","Is"], "answer": 0 }
+]
+Save & exit.
+
+✅ STEP 4: Run the script
+python split_questions.py
+or (if Python 3):
+
+python3 split_questions.py
+✅ OUTPUT (AUTOMATIC)
+You will get 15 files created in the same folder:
+
+Set_1.json
+Set_2.json
+Set_3.json
+...
+Set_15.json
+Each file contains exactly 15 questions 🎯
+
+🧠 NOTES
+Total used questions = 225
+
+Remaining 25 questions are ignored automatically
+
+Questions are randomized every run
+
+Want upgrades?
+I can give terminal code to:
+
+create PDF question papers
+
+export to Excel
+
+generate MCQ test format
+
+auto-number questions
+
+reshuffle sets every time
+
+Just say the word 👌
+
+
+You said:
+CAN I T BE DONE BY TERMAHN 
+
+ChatGPT said:
+Yes 👍 it CAN be done directly from the terminal — no editor, no Python file, nothing fancy.
+
+Below are two REAL terminal-only ways. Pick the one you like.
+
+✅ METHOD 1: ONE-LINE TERMINAL COMMAND (Python via terminal)
+Assumes:
+
+Your questions are in questions.json
+
+File is a JSON array of 250 question objects
+
+👉 Run this single command in terminal:
+python3 - <<'EOF'
+import json, random
+
+with open("questions.json") as f:
+    q = json.load(f)
+
+random.shuffle(q)
+
+for i in range(15):
+    with open(f"Set_{i+1}.json", "w") as f:
+        json.dump(q[i*15:(i+1)*15], f, indent=2)
+
+print("✅ 15 sets created, each with 15 questions")
+EOF
+📂 OUTPUT
+Set_1.json
+Set_2.json
+...
+Set_15.json
+✅ METHOD 2: PURE SHELL + jq (NO PYTHON)
+This uses jq (JSON processor).
+
+Install jq (once)
+sudo apt install jq        # Ubuntu / Debian
+brew install jq            # macOS
+Split into sets
+jq -c '. | shuffle | .[0:225] | _nwise(15)' questions.json \
+| awk '{print > "Set_" NR ".json"}'
+⚠️ IMPORTANT NOTES
+Uses 225 questions
+
+Remaining 25 questions are unused
+
+Every run reshuffles questions
+
+No manual editing required
+
+🔥 BEST OPTION?
+Method	Recommended
+You have Python	✅ Method 1
+You want shell-only	✅ Method 2
+If you want:
+
+numbering inside each set
+
+CSV / Excel output
+
+PDF papers
+
+fixed (non-random) sets
+
+Tell me — I’ll give you the exact terminal command for that too 🚀
+
+
+You said:
+INSIDE VS CO0DE \
+
+ChatGPT said:
+Ahhh — you mean doing this INSIDE VS Code 👍
+Yes, totally doable, and it’s actually the easiest way.
+
+I’ll walk you through it step-by-step, no confusion.
+
+✅ STEP 1: Open folder in VS Code
+Open VS Code
+
+Click File → Open Folder
+
+Open the folder that contains questions.json
+
+✅ STEP 2: Open VS Code Terminal
+Press Ctrl + ` (backtick)
+OR
+
+Menu → Terminal → New Terminal
+
+👉 This terminal is the same as your system terminal, just inside VS Code.
+
+✅ STEP 3: Run this DIRECTLY in VS Code terminal
+👉 No file creation needed
+
+python3 - <<'EOF'
+import json, random
+
+with open("questions.json", "r", encoding="utf-8") as f:
+    questions = json.load(f)
+
+random.shuffle(questions)
+
+for i in range(15):
+    with open(f"Set_{i+1}.json", "w", encoding="utf-8") as f:
+        json.dump(questions[i*15:(i+1)*15], f, indent=2)
+
+print("✅ 15 sets created successfully")
+EOF
+Press ENTER ✅
+
+✅ STEP 4: Check Explorer (Left Side)
+You’ll instantly see:
+
+Set_1.json
+Set_2.json
+Set_3.json
+...
+Set_15.json
+Each file = 15 questions
+
+🧠 IMPORTANT NOTES
+Uses 225 questions
+
+Extra 25 questions ignored
+
+Questions are randomized
+
+Run again → new random sets
+
+⭐ OPTIONAL (Want this?)
+I can also help you:
+
+Auto-number questions inside each set
+
+Create PDF question papers
+
+Export to Excel
+
+Lock answers separately
+
+Generate CBT / online exam format
+
+Just tell me what you want next 👌
+
+
+You said:
+I HAVE STORD MY QUESTIONS IN set.json
+
+ChatGPT said:
+Perfect 👍
+That’s no problem at all — just change the filename.
+
+Since your questions are stored in set.json, do this inside VS Code terminal:
+
+✅ RUN THIS IN VS CODE TERMINAL
+python3 - <<'EOF'
+import json, random
+
+with open("set.json", "r", encoding="utf-8") as f:
+    questions = json.load(f)
+
+random.shuffle(questions)
+
+for i in range(15):
+    with open(f"Set_{i+1}.json", "w", encoding="utf-8") as f:
+        json.dump(questions[i*15:(i+1)*15], f, indent=2)
+
+print("✅ DONE: 15 sets created from set.json")
+EOF
+Press Enter ✅
+
+📂 WHAT YOU’LL SEE
+In the VS Code Explorer panel:
+
+Set_1.json
+Set_2.json
+Set_3.json
+...
+Set_15.json
+Each file contains 15 questions 🎯
+
+🧠 QUICK CHECK
+set.json must be a JSON array like:
+
+[
+  { "q": "...", "options": [...], "answer": 0 },
+  { "q": "...", "options": [...], "answer": 1 }
+]
+🚀 WANT MORE?
+I can:
+
+number questions automatically
+
+separate questions.json & answers.json
+
+export to PDF / Word
+
+shuffle options inside each question
+
+make CBT exam format
+
+Just tell me 👌
+
+
+You said:
+@sk-mallick ➜ .../english-practice-set/data/sva/high (main) $ python3 - <<'EOF'
+import json, random
+
+with open("set.json", "r", encoding="utf-8") as f:
+    questions = json.load(f)
+
+random.shuffle(questions)
+
+for i in range(15):
+EOFnt("✅ DONE: 15 sets created from set.json")indent=2)as f:
+Traceback (most recent call last):
+  File "<stdin>", line 4, in <module>
+  File "/home/codespace/.python/current/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/home/codespace/.python/current/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.python/current/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1 column 99 (char 98)
+
+this error ocouyr
+
+ChatGPT said:
+You’re very close 👍
+The error is NOT from the Python code — it’s from set.json format.
+
+❌ WHY THIS ERROR OCCURRED
+json.decoder.JSONDecodeError: Extra data
+This 100% means your set.json is NOT a single valid JSON array.
+
+From what you pasted earlier, your file looks like this 👇
+
+{ "q": "...", "options": [...], "answer": 0 },
+{ "q": "...", "options": [...], "answer": 1 },
+{ "q": "...", "options": [...], "answer": 2 }
+🚫 That is INVALID JSON
+
+JSON must have ONE root element.
+
+✅ CORRECT FORMAT (THIS FIXES EVERYTHING)
+Your set.json must look exactly like this:
+
+[
+  { "q": "What time ______ the plane leave?", "options": ["Does","Do","Is","Have"], "answer": 0 },
+  { "q": "The United States ______ a big navy.", "options": ["Has","Have","Are","Is"], "answer": 0 },
+  { "q": "I ______ writing a book.", "options": ["Will","Am","Was","---"], "answer": 1 }
+]
+✅ KEY RULES
+One [[ at the start
+
+One ] at the end
+
+Commas between objects
+
+❌ NO comma after the last object
+
+🛠️ QUICK TERMINAL FIX (NO MANUAL EDITING)
+If your file contains many JSON objects separated by commas, run this:
+
+sed '1s/^/[/' set.json | sed '$s/,$/]/' > fixed_set.json
+Then use the fixed file 👇
+
+mv fixed_set.json set.json
+✅ NOW RUN THIS (WORKING COMMAND)
+python3 - <<'EOF'
+import json, random
+
+with open("set.json", "r", encoding="utf-8") as f:
+    questions = json.load(f)
+
+random.shuffle(questions)
+
+for i in range(15):
+    with open(f"Set_{i+1}.json", "w", encoding="utf-8") as f:
+        json.dump(questions[i*15:(i+1)*15], f, indent=2)
+
+print("✅ DONE: 15 sets created successfully")
+EOF
+🧪 OPTIONAL: VERIFY JSON BEFORE RUNNING
+python3 -m json.tool set.json > /dev/null && echo "JSON OK"
+If you see JSON OK, you’re good.
+
+✅ SUMMARY
+✔ Error cause: multiple root JSON objects
+✔ Fix: wrap everything in [ ]
+✔ Code is correct
+✔ Your sets will generate perfectly after this
+
+If you want, I can:
+
+auto-fix any bad JSON file
+
+convert your questions to CSV / Excel
+
+validate answers
+
+generate exam-ready PDFs
+
+Just say 👍
+
+
+You said:
+I NEED THE OUTPUT ALSO IN THE SAME A QUESTION IN ONE LINE DONT MAKE IT MULTIILIN E
+
+ChatGPT said:
+Got it 👍
+You want each question object to be written on ONE SINGLE LINE in the output files — no multi-line formatting.
+
+That’s easy. We just remove indent=2.
+
+✅ RUN THIS IN VS CODE TERMINAL (ONE-LINE JSON OUTPUT)
+python3 - <<'EOF'
+import json, random
+
+with open("set.json", "r", encoding="utf-8") as f:
+    questions = json.load(f)
+
+random.shuffle(questions)
+
+for i in range(15):
+    with open(f"Set_{i+1}.json", "w", encoding="utf-8") as f:
+        json.dump(
+            questions[i*15:(i+1)*15],
+            f,
+            ensure_ascii=False,
+            separators=(',', ':')
+        )
+
+print("✅ DONE: 15 sets created (one-line questions)")
+EOF
+📌 WHAT THIS DOES
+✔ Each question object stays on one line
+
+✔ No extra spaces or indentation
+
+✔ Output is compact JSON
+
+✔ Still valid JSON
+
+Example output inside Set_1.json
+[{"q":"What time ______ the plane leave?","options":["Does","Do","Is","Have"],"answer":0},{"q":"The United States ______ a big navy.","options":["Has","Have","Are","Is"],"answer":0}]
+🧠 OPTIONAL (IF YOU WANT EACH QUESTION ON A NEW LINE)
+If you want one question per line (still single-line objects):
+
+python3 - <<'EOF'
+import json, random
+
+with open("set.json", "r", encoding="utf-8") as f:
+    questions = json.load(f)
+
+random.shuffle(questions)
+
+for i in range(15):
+    with open(f"Set_{i+1}.json", "w", encoding="utf-8") as f:
+        f.write("[\n")
+        subset = questions[i*15:(i+1)*15]
+        for j, q in enumerate(subset):
+            line = json.dumps(q, ensure_ascii=False, separators=(',', ':'))
+            f.write(line)
+            if j < len(subset) - 1:
+                f.write(",\n")
+        f.write("\n]")
+
+print("✅ DONE: 15 sets created (1 question per line)")
+EOF
+Output style:
+[
+{"q":"...","options":[...],"answer":0},
+{"q":"...","options":[...],"answer":1}
+]
+🎯 TELL ME WHICH ONE YOU WANT
+1️⃣ Everything compact on one line
+2️⃣ One question per line (still single-line objects)
+
+I’ll lock it in exactly how you want 🚀
+
+
+
+Attach
+
+Search
+
+Study
+
+Create image
+
+Voice
+We use cookies
+
+We use cookies to help this site function, understand service usage, and support marketing efforts. Visit Manage Cookies to change preferences anytime. View our Cookie Policy for more info.
+
+
+Manage Cookies
+
+Reject non-essential
+
+Accept all

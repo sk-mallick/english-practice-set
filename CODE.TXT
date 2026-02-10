@@ -1,0 +1,21 @@
+python3 - <<'EOF'
+import json, random
+
+with open("set.json", "r", encoding="utf-8") as f:
+    questions = json.load(f)
+
+random.shuffle(questions)
+
+for i in range(15):
+    with open(f"Set_{i+1}.json", "w", encoding="utf-8") as f:
+        json.dump(
+            questions[i*15:(i+1)*15],
+            f,
+            ensure_ascii=False,
+            separators=(',', ':')
+        )
+
+print("✅ DONE: 15 sets created (one-line questions)")
+EOF
+
+
