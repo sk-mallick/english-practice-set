@@ -3,5 +3,8 @@ export default {
     title: "Subject-Verb Agreement",  // The big bold title
     description: "13 Sets • 15 Questions Each - P", // The small text below
     engine: "fill",               // "mcq" or "fill" (which HTML file to open)
-    icon: "list"                 // "time", "list", "book", or "chat"
+    icon: "list",                 // "time", "list", "book", or "chat"
+
+    headerTitle: "SYNTAX PRACTICE",                 // Top left title in the engine
+    headerSubtitlePrefix: "By Chiranjibi Sir"       // Text before the bullet point (•)
 }

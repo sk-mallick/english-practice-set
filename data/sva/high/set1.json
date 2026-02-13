@@ -149,7 +149,7 @@
     { "q": "Till today, neither of the two brothers ______ this race.", "options": ["Will run", "Would run", "Has run", "Have run"], "answer": 2 },
     { "q": "They ______ work hard to get good grades.", "options": ["Might", "Were", "Does", "Should"], "answer": 3 },
     { "q": "I ______ you are right.", "options": ["Am thinking", "Thought", "Think", "Thinks"], "answer": 2 },
-    { "q": "Nearly all the sports practised nowadays __________ competitive.", "options": ["Error: Is → Correction: Are", "Error: Practised → Correction: Practices", "Error: Nearly → Correction: Really", "Error: Competitive → Correction: Comparable"], "answer": 0 },
+    { "q": "Nearly all the sports practised nowadays __________ competitive.", "options": ["Error: Is | Correction: Are", "Error: Practised | Correction: Practices", "Error: Nearly | Correction: Really", "Error: Competitive | Correction: Comparable"], "answer": 0 },
     { "q": "Every student __________ going to be responsible for his chap- ters and each student __________ bring his or her homework on the exam day.", "options": ["Is, have to", "Is, has to", "Are, have to", "Are, will"], "answer": 1 },
     { "q": "With your cooperation, we __________ win the match.", "options": ["Must", "Shouldn’t", "Ought", "Might"], "answer": 3 },
     { "q": "The children of the man who works with me __________ broken the window this morning.", "options": ["Have", "Has", "Were", "Had"], "answer": 0 },
@@ -215,10 +215,10 @@
     { "q": "Neither she nor I __________ getting the lunch special.", "options": ["Was", "Am", "Are", "Is"], "answer": 1 },
     { "q": "One of the flowers __________ wilted.", "options": ["Were", "Are", "Has", "Have"], "answer": 2 },
     { "q": "He and I __________ good friends but now we __________ anymore.", "options": ["Were, aren’t talking", "Am, don’t talking", "Were, won’t talk", "Are, weren’t talking"], "answer": 0 },
-    { "q": "The winning athletes were felicitation by the State Gov- ernment and the City Council.", "options": ["Error: Winning → Correction: Win", "Error: Were → Correction: Was", "Error: Felicitation → Correction: Felicitated", "Error: And → Correction: But"], "answer": 2 },
+    { "q": "The winning athletes were felicitation by the State Gov- ernment and the City Council.", "options": ["Error: Winning | Correction: Win", "Error: Were | Correction: Was", "Error: Felicitation | Correction: Felicitated", "Error: And | Correction: But"], "answer": 2 },
     { "q": "I don’t know anyone else who __________ to the new theatre production yet.", "options": ["Has been", "Were going", "Are going", "Have been"], "answer": 0 },
     { "q": "One of my close friends __________ us a question that neither of us __________ able to answer.", "options": ["Had asked, are", "Has asked, is", "Had asked, can", "Have asked, is"], "answer": 1 },
-    { "q": "World leaders should work to establish peace of the world so that human and economic resources could be used to meet the pressing demands of mankind.", "options": ["Error: Of → Correction: In", "Error: So that → Correction: Although", "Error: Could → Correction: Shall", "Error: Meet → Correction: Met"], "answer": 0 },
+    { "q": "World leaders should work to establish peace of the world so that human and economic resources could be used to meet the pressing demands of mankind.", "options": ["Error: Of | Correction: In", "Error: So that | Correction: Although", "Error: Could | Correction: Shall", "Error: Meet | Correction: Met"], "answer": 0 },
     { "q": "The opportunity to volunteer at the local food bank made me __________ the challenges faced by underprivileged com- munities.", "options": ["Realize", "Realizing", "Realized", "To realize"], "answer": 0 },
     { "q": "After the meeting, he said a great deal of advice __________.", "options": ["Were given", "Has been given", "Had been given", "Have been given"], "answer": 2 },
     { "q": "Either Cassie or Marie __________ the employees this afternoon.", "options": ["Paying", "Pays", "Pay", "Payed"], "answer": 1 },
@@ -248,5 +248,5 @@
     { "q": "Most of the milk __________ gone.", "options": ["Have", "Were", "Are", "Is"], "answer": 3 },
     { "q": "One of the main solutions to such problems __________ to show no reaction to the person in those times.", "options": ["Is", "Supposed", "Were", "Was"], "answer": 0 },
     { "q": "One of the books __________ been missing.", "options": ["Has", "Is", "Are", "Have"], "answer": 0 },
-    { "q": "Nearly all the sports practised nowadays __________ competitive.", "options": ["Error: Is → Correction: Are", "Error: Practised → Correction: Practices", "Error: Nearly → Correction: Really", "Error: Competitive → Correction: Comparable"], "answer": 0 }
+    { "q": "Nearly all the sports practised nowadays __________ competitive.", "options": ["Error: Is | Correction: Are", "Error: Practised | Correction: Practices", "Error: Nearly | Correction: Really", "Error: Competitive | Correction: Comparable"], "answer": 0 }
 ]

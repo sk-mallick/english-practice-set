@@ -9,10 +9,24 @@ async function init() {
     const { topic, level, set } = getParams();
     currentSetId = set;
     
-    injectHeader("SYNTAX", `By Chiranjibi Sir • ${level.toUpperCase()} • SET ${set}`);
+    // 1. Load Config for Header Control
+    let config = {};
+    try {
+        const configModule = await import(`../data/${topic}/${level}/config.js`);
+        config = configModule.default;
+    } catch (e) {
+        console.error("Config not found, using defaults");
+    }
+
+    // 2. Inject Header with Config Values or Fallbacks
+    injectHeader(
+        config.headerTitle || topic.replace(/-/g, ' '), 
+        `${config.headerSubtitlePrefix || "By Chiranjibi Sir"} • ${level.toUpperCase()} • SET ${set}`
+    );
+
     injectFooter();
     
-    // 1. Discover Sets
+    // 3. Discover Sets
     availableSets = await discoverSets(topic, level);
 
     const url = `../data/${topic}/${level}/set${set}.json`;
