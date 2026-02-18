@@ -1,4 +1,4 @@
-import { Sound, Effects, injectHeader, injectFooter, injectMenu, getParams, discoverSets, UX } from './ui.js';
+import { Sound, Effects, injectHeader, injectFooter, injectMenu, getParams, discoverSets, UX, initPrintProtection } from './ui.js';
 
 let allQuestions = [];
 let displayQuestions = [];
@@ -6,13 +6,15 @@ let currentSetId = 1;
 let availableSets = [1];
 
 async function init() {
+    // 0. Init Print Protection
+    initPrintProtection();
+
     const { topic, level, set } = getParams();
     currentSetId = set;
 
-    // 1. Start Progress & Show Skeletons
-    UX.ProgressBar.start();
+    // 1. Show MCQ Specific Skeletons
     const container = document.getElementById('quiz-container');
-    container.innerHTML = Array(5).fill(UX.Skeletons.getQuestionSkeleton()).join('');
+    container.innerHTML = Array(5).fill(UX.Skeletons.getMCQSkeleton()).join('');
 
     // 2. Load Config for Header Control
     let config = {};
@@ -46,11 +48,9 @@ async function init() {
         displayQuestions = [...allQuestions];
         setupMenu(); 
         render();
-        UX.ProgressBar.finish();
     } catch (e) {
         document.getElementById('quiz-container').innerHTML = `<div class="text-center py-20 text-slate-500 font-bold">Failed to load: ${url}<br>${e.message}</div>`;
         setupMenu(); 
-        UX.ProgressBar.finish();
     }
 }
 
@@ -60,26 +60,20 @@ function setupMenu() {
         availableSets,
         (newSet) => {
             const { topic, level } = getParams();
-            // Trigger progress bar before navigation
-            UX.ProgressBar.start();
             window.location.href = `?subject=${topic}&level=${level}&set=${newSet}`;
         },
         (filterType) => {
-            UX.ProgressBar.start();
             if (filterType === 'odd') displayQuestions = allQuestions.filter((_, i) => (i + 1) % 2 !== 0);
             if (filterType === 'even') displayQuestions = allQuestions.filter((_, i) => (i + 1) % 2 === 0);
             render();
             closeMenu();
-            UX.ProgressBar.finish();
         },
         (count) => {
-            UX.ProgressBar.start();
             const c = parseInt(count) || 10;
             const shuffled = [...allQuestions].sort(() => 0.5 - Math.random());
             displayQuestions = shuffled.slice(0, c);
             render();
             closeMenu();
-            UX.ProgressBar.finish();
         }
     );
 }
@@ -140,8 +134,8 @@ function render() {
         container.appendChild(card);
     });
 
-    // TRIGGER STAGGER ANIMATION
-    UX.staggerElements('.quiz-card-entry', 100);
+    // TRIGGER STAGGER ANIMATION (Reduced Delay to 30ms)
+    UX.staggerElements('.quiz-card-entry', 30);
 }
 
 function handleAnswer(btn, index, correctIndex, container, card) {

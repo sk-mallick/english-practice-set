@@ -33,24 +33,19 @@ if (typeof tailwind !== 'undefined') {
 // --- 2. GLOBAL UX STYLES & ANIMATIONS ---
 const uxStyle = document.createElement('style');
 uxStyle.textContent = `
-    /* Shimmer Effect for Skeletons */
-    @keyframes shimmer {
-        0% { background-position: -200% 0; }
-        100% { background-position: 200% 0; }
-    }
-    .skeleton-shimmer {
-        background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
-        background-size: 200% 100%;
-        animation: shimmer 1.5s infinite linear;
+    /* Static Dark Skeletons (No Shimmer) */
+    .skeleton-static {
+        background-color: #334155;
+        opacity: 0.5;
     }
     
     /* Staggered Entrance Animation */
     @keyframes slideUpFade {
-        from { opacity: 0; transform: translateY(20px); }
+        from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
     }
     .animate-enter {
-        animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         opacity: 0; /* Start hidden */
         will-change: transform, opacity;
     }
@@ -58,7 +53,6 @@ uxStyle.textContent = `
     /* Progress Bar */
     #nprogress-bar {
         position: fixed;
-        top: 0;
         left: 0;
         height: 3px;
         background: #EAB308;
@@ -70,23 +64,17 @@ uxStyle.textContent = `
 `;
 document.head.appendChild(uxStyle);
 
-// --- 3. PRINT PROTECTION MODULE (NEW) ---
-const PrintProtection = {
-    init() {
-        this.injectPrintCSS();
-        this.injectPrintDOM();
-        this.bindEvents();
-    },
+// --- 3. PRINT PROTECTION MODULE (MODULARIZED) ---
+export function initPrintProtection() {
+    const style = document.createElement('style');
+    style.type = 'text/css';
+    style.textContent = `
+        /* HIDE ON SCREEN */
+        #official-print-notice { display: none; }
 
-    injectPrintCSS() {
-        const style = document.createElement('style');
-        style.type = 'text/css';
-        style.media = 'print';
-        style.textContent = `
-            @page {
-                size: A4;
-                margin: 0;
-            }
+        /* SHOW ON PRINT */
+        @media print {
+            @page { size: A4; margin: 0; }
             body, html {
                 margin: 0 !important;
                 padding: 0 !important;
@@ -95,13 +83,11 @@ const PrintProtection = {
                 overflow: hidden !important;
                 background-color: #ffffff !important;
             }
-            /* Hide EVERYTHING else */
             body > *:not(#official-print-notice) {
                 display: none !important;
                 visibility: hidden !important;
                 opacity: 0 !important;
             }
-            /* Show Notice */
             #official-print-notice {
                 display: flex !important;
                 visibility: visible !important;
@@ -114,7 +100,7 @@ const PrintProtection = {
                 position: fixed;
                 top: 0;
                 left: 0;
-                z-index: 2147483647; /* Max Z-Index */
+                z-index: 2147483647;
                 background: white;
                 border: 20px solid white;
                 box-sizing: border-box;
@@ -122,99 +108,44 @@ const PrintProtection = {
                 color: #000;
                 text-align: center;
             }
-            .pp-content-box {
-                border: 2px solid #000;
-                padding: 40px;
-                width: 80%;
-                max-width: 600px;
-                position: relative;
-                background: white;
-                z-index: 2;
-            }
-            .pp-watermark {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%) rotate(-45deg);
-                font-size: 60px;
-                font-weight: bold;
-                color: rgba(0,0,0,0.03);
-                white-space: nowrap;
-                z-index: 1;
-                pointer-events: none;
-                user-select: none;
-            }
-            .pp-header h1 { font-size: 28px; font-weight: bold; margin: 0 0 5px 0; letter-spacing: 1px; }
-            .pp-header h2 { font-size: 18px; font-weight: bold; margin: 0 0 25px 0; color: #444; }
-            .pp-message { margin-bottom: 30px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; padding: 20px 0; }
-            .pp-warn { font-size: 16px; font-weight: bold; color: #dc2626; margin-bottom: 10px; text-transform: uppercase; }
-            .pp-info { font-size: 14px; color: #333; line-height: 1.5; }
-            .pp-contact { text-align: left; font-size: 13px; margin: 0 auto; width: fit-content; line-height: 1.8; }
-            .pp-contact strong { display: inline-block; width: 90px; color: #000; }
-            .pp-footer { margin-top: 30px; font-size: 10px; color: #666; font-style: italic; }
-            .pp-credit { margin-top: 5px; font-weight: bold; color: #999; }
-        `;
-        document.head.appendChild(style);
-    },
+        }
+    `;
+    document.head.appendChild(style);
 
-    injectPrintDOM() {
-        const div = document.createElement('div');
-        div.id = 'official-print-notice';
-        div.setAttribute('aria-hidden', 'true');
-        div.innerHTML = `
-            <div class="pp-watermark">ENGLISHJIBI CLASSES</div>
-            <div class="pp-content-box">
-                <div class="pp-header">
-                    <h1>ENGLISHJIBI CLASSES</h1>
-                    <h2>CHIRANJIBI SIR</h2>
-                </div>
-                <div class="pp-message">
-                    <p class="pp-warn">This content is protected.<br>Direct browser printing is disabled.</p>
-                    <p class="pp-info">To obtain an official formatted PDF,<br>please contact:</p>
-                </div>
-                <div class="pp-contact">
-                    <div><strong>📞 Phone:</strong> +91 83289 22917 / +91 77358 12335</div>
-                    <div><strong>📱 WhatsApp:</strong> +91 83289 22917</div>
-                    <div><strong>📧 Email:</strong> rangoclasses@gmail.com</div>
-                    <div><strong>📍 Address:</strong> Duplex 37, Sailashree Vihar<br><span style="margin-left:90px">Bhubaneswar – 751021</span></div>
-                </div>
-                <div class="pp-footer">
-                    <p>Official PDFs are generated through EnglishJibi Authorized System.</p>
-                    <p class="pp-credit">Website Designed & Developed by Subham Kumar Mallick</p>
-                </div>
+    const div = document.createElement('div');
+    div.id = 'official-print-notice';
+    div.setAttribute('aria-hidden', 'true');
+    div.innerHTML = `
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-45deg);font-size:60px;font-weight:bold;color:rgba(0,0,0,0.03);white-space:nowrap;z-index:1;">ENGLISHJIBI CLASSES</div>
+        <div style="border:2px solid #000;padding:40px;width:80%;max-width:600px;position:relative;background:white;z-index:2;">
+            <div style="margin-bottom:25px;">
+                <h1 style="font-size:28px;font-weight:bold;margin:0 0 5px 0;">ENGLISHJIBI CLASSES</h1>
+                <h2 style="font-size:18px;font-weight:bold;margin:0;color:#444;">CHIRANJIBI SIR</h2>
             </div>
-        `;
-        document.body.appendChild(div);
-    },
+            <div style="margin-bottom:30px;border-top:1px solid #ddd;border-bottom:1px solid #ddd;padding:20px 0;">
+                <p style="font-size:16px;font-weight:bold;color:#dc2626;margin:0 0 10px 0;text-transform:uppercase;">This content is protected.</p>
+                <p style="font-size:16px;font-weight:bold;color:#dc2626;margin:0 0 10px 0;text-transform:uppercase;">DIRECT BROWSER PRINTING IS DISABLED.</p>
+                <p style="font-size:14px;color:#333;line-height:1.5;">Direct browser printing is disabled.<br>To obtain an official formatted PDF, please contact:</p>
+            </div>
+            <div style="text-align:left;font-size:13px;margin:0 auto;width:fit-content;line-height:1.8;">
+                <div><strong>📞 Phone:</strong> +91 83289 22917  / +91 77358 12335</div>
+                <div><strong>📧 Email:</strong> rangoclasses@gmail.com</div>
+                <div><strong>📍Address:</strong> Duplex 37, Sailashree Vihar Bhubaneswar - 751021</div>
+            </div>
+            <div style="margin-top:30px;font-size:10px;color:#666;font-style:italic;">
+                <p>Official PDFs are generated through EnglishJibi Authorized System.</p>
+                <p>Website Designed by Subham Kumar Mallick</p>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(div);
 
-    bindEvents() {
-        // Intercept Keyboard Shortcuts
-        window.addEventListener('keydown', (e) => {
-            if ((e.ctrlKey || e.metaKey) && (e.key === 'p' || e.key === 'P')) {
-                // We allow the print dialog to open, but the CSS will restrict what is seen.
-                // This is less intrusive than blocking it entirely, which browsers often prevent.
-                // However, we can focus the notice logic.
-                console.log('Print attempt detected. Protection active.');
-            }
-        });
-
-        // Intercept window.print
-        const originalPrint = window.print;
-        window.print = function() {
-            console.log('Direct print called. Protection active.');
-            originalPrint();
-        };
-    }
-};
-
-// Initialize Print Protection Immediately
-if (typeof window !== 'undefined') {
-    // Wait for DOM
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => PrintProtection.init());
-    } else {
-        PrintProtection.init();
-    }
+    // Bind Events
+    window.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && (e.key === 'p' || e.key === 'P')) {
+            console.log('Print attempt detected. Protection active.');
+        }
+    });
 }
 
 // --- 4. UX UTILITIES ---
@@ -228,17 +159,24 @@ export const UX = {
                 this.element.id = 'nprogress-bar';
                 this.element.style.width = '0%';
                 this.element.style.opacity = '0';
+                this.element.style.top = '0px'; // Default
                 document.body.appendChild(this.element);
             }
         },
         start() {
             this.init();
+
+            // Attempt to position below header if it exists
+            const header = document.querySelector('header');
+            if (header) {
+                this.element.style.top = header.offsetHeight + 'px';
+            }
+
             this.element.style.opacity = '1';
             this.element.style.width = '0%';
-            // Jump to 40% immediately, then trickle
             requestAnimationFrame(() => {
                 this.element.style.width = '40%';
-                setTimeout(() => { if(this.element.style.width !== '100%') this.element.style.width = '80%'; }, 500);
+                setTimeout(() => { if (this.element.style.width !== '100%') this.element.style.width = '80%'; }, 500);
             });
         },
         finish() {
@@ -251,33 +189,43 @@ export const UX = {
         }
     },
 
-    // Skeleton Generators
+    // Skeleton Generators (Minimal & Static)
     Skeletons: {
         getCardSkeleton() {
             return `
-            <div class="border border-slate-800 rounded-2xl p-8 text-center relative overflow-hidden bg-slate-900/30">
-                <div class="skeleton-shimmer absolute inset-0 opacity-10"></div>
-                <div class="w-14 h-14 rounded-xl bg-slate-800 mx-auto mb-6 skeleton-shimmer"></div>
-                <div class="h-6 w-3/4 bg-slate-800 mx-auto mb-3 rounded skeleton-shimmer"></div>
-                <div class="h-4 w-1/2 bg-slate-800 mx-auto rounded skeleton-shimmer"></div>
+            <div class="border border-slate-800 rounded-2xl p-8 text-center bg-slate-900/30">
+                <div class="w-14 h-14 rounded-xl skeleton-static mx-auto mb-6"></div>
+                <div class="h-6 w-3/4 skeleton-static mx-auto mb-3 rounded"></div>
+                <div class="h-4 w-1/2 skeleton-static mx-auto rounded"></div>
             </div>`;
         },
-        getQuestionSkeleton() {
+        getMCQSkeleton() {
             return `
-            <div class="bg-[#1e293b] rounded-xl border border-slate-700/50 p-5 mb-4 relative overflow-hidden">
-                <div class="skeleton-shimmer absolute inset-0 opacity-5"></div>
-                <div class="flex gap-4 mb-6">
-                    <div class="w-10 h-8 rounded-lg bg-slate-700 skeleton-shimmer shrink-0"></div>
+            <div class="bg-[#1e293b] rounded-xl border border-slate-700/50 mb-4 overflow-hidden">
+                <div class="px-6 py-4 border-b border-slate-700">
+                    <div class="h-6 w-2/3 skeleton-static rounded"></div>
+                </div>
+                <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="h-14 skeleton-static rounded-lg"></div>
+                    <div class="h-14 skeleton-static rounded-lg"></div>
+                    <div class="h-14 skeleton-static rounded-lg"></div>
+                    <div class="h-14 skeleton-static rounded-lg"></div>
+                </div>
+            </div>`;
+        },
+        getFillSkeleton() {
+            return `
+            <div class="bg-[#1e293b] rounded-xl border border-slate-700/50 p-5 mb-4">
+                <div class="flex gap-4 mb-4 items-center">
+                    <div class="w-8 h-8 rounded-full skeleton-static shrink-0"></div>
                     <div class="flex-1 space-y-2">
-                        <div class="h-4 w-full bg-slate-700 rounded skeleton-shimmer"></div>
-                        <div class="h-4 w-3/4 bg-slate-700 rounded skeleton-shimmer"></div>
+                        <div class="h-5 w-full skeleton-static rounded"></div>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="h-12 bg-slate-700 rounded-lg skeleton-shimmer"></div>
-                    <div class="h-12 bg-slate-700 rounded-lg skeleton-shimmer"></div>
-                    <div class="h-12 bg-slate-700 rounded-lg skeleton-shimmer"></div>
-                    <div class="h-12 bg-slate-700 rounded-lg skeleton-shimmer"></div>
+                <div class="ml-12 flex gap-2">
+                    <div class="h-8 w-20 skeleton-static rounded-full"></div>
+                    <div class="h-8 w-20 skeleton-static rounded-full"></div>
+                    <div class="h-8 w-20 skeleton-static rounded-full"></div>
                 </div>
             </div>`;
         }
@@ -288,14 +236,14 @@ export const UX = {
         const nextSet = parseInt(currentSet) + 1;
         const url = `../data/${topic}/${level}/set${nextSet}.json`;
         if (window.requestIdleCallback) {
-            requestIdleCallback(() => fetch(url, { priority: 'low' }).catch(() => {}));
+            requestIdleCallback(() => fetch(url, { priority: 'low' }).catch(() => { }));
         } else {
-            setTimeout(() => fetch(url).catch(() => {}), 2000);
+            setTimeout(() => fetch(url).catch(() => { }), 2000);
         }
     },
 
     // Staggered Reveal Helper
-    staggerElements(selector, baseDelay = 50) {
+    staggerElements(selector, baseDelay = 30) {
         const els = document.querySelectorAll(selector);
         els.forEach((el, index) => {
             el.style.animationDelay = `${index * baseDelay}ms`;
@@ -317,21 +265,21 @@ export async function discoverSets(topic, level) {
     const sets = [];
     let current = 1;
     let keepLooking = true;
-    const MAX_SAFETY_LIMIT = 50; 
+    const MAX_SAFETY_LIMIT = 50;
 
     while (keepLooking && current <= MAX_SAFETY_LIMIT) {
         try {
             const url = `../data/${topic}/${level}/set${current}.json`;
             const response = await fetch(url, { method: 'HEAD' });
-            
+
             if (response.status === 405 || response.status === 404) {
-                 if (response.status === 404) {
-                     keepLooking = false;
-                 } else {
-                     const getRes = await fetch(url);
-                     if (getRes.ok) sets.push(current);
-                     else keepLooking = false;
-                 }
+                if (response.status === 404) {
+                    keepLooking = false;
+                } else {
+                    const getRes = await fetch(url);
+                    if (getRes.ok) sets.push(current);
+                    else keepLooking = false;
+                }
             } else if (response.ok) {
                 sets.push(current);
             } else {
@@ -340,7 +288,7 @@ export async function discoverSets(topic, level) {
         } catch (e) {
             keepLooking = false;
         }
-        
+
         if (keepLooking) current++;
     }
 
@@ -424,7 +372,7 @@ export function injectHeader(title, subtitle) {
 
     const html = `
     <!-- MAIN APP SHELL WRAPPER -->
-    <div class="fixed top-0 left-0 w-full z-50">
+    <div class="fixed top-0 left-0 w-full z-50" id="main-header-wrapper">
         
         <!-- HEADER (Z-INDEX 20: Sits on top of menu) -->
         <header class="relative z-20 bg-[#020617]/95 backdrop-blur-md shadow-2xl border-b border-slate-800">
@@ -493,6 +441,14 @@ export function injectHeader(title, subtitle) {
 
     document.getElementById('header-mount').innerHTML = html;
 
+    // UPDATE PROGRESS BAR POSITION AFTER INJECTION
+    const headerWrapper = document.getElementById('main-header-wrapper');
+    const progressBar = document.getElementById('nprogress-bar');
+    if (headerWrapper && progressBar) {
+        // Use offsetHeight of the wrapper since it is the fixed element
+        progressBar.style.top = headerWrapper.offsetHeight + 'px';
+    }
+
     document.getElementById('btn-sound').onclick = function () { Effects.toggleSound(this); };
     document.getElementById('btn-confetti').onclick = function () { Effects.toggleConfetti(this); };
 
@@ -546,7 +502,7 @@ function initMenuSystem() {
 
 export function injectMenu(currentSet, activeSets, onSetClick, onFilter, onRandom) {
     let setButtonsHtml = '';
-    
+
     activeSets.sort((a, b) => a - b);
 
     activeSets.forEach(i => {

@@ -121,14 +121,10 @@ function renderGrid(cards) {
         const container = document.getElementById('card-grid');
         if(container) container.innerHTML = Array(6).fill(UX.Skeletons.getCardSkeleton()).join('');
         
-        UX.ProgressBar.start(); // Start illusion
-
         const cards = await scanLibrary();
         renderGrid(cards);
         
-        UX.ProgressBar.finish(); // Finish illusion
     } catch(err) {
         console.error("Auto-discovery failed:", err);
-        UX.ProgressBar.finish();
     }
 })();
