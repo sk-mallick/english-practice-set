@@ -1,7 +1,10 @@
 /**
  * GRAMMARHUB AUTOMATION LOADER
  * Scans /data directories for config.js and builds the index grid.
+ * Enhanced with Skeletons and Staggered Animations.
  */
+
+import { UX } from './ui.js';
 
 // 1. REGISTRY - Add new subject folder names here
 const SUBJECTS = [
@@ -72,20 +75,22 @@ function renderGrid(cards) {
     const container = document.getElementById('card-grid');
     if(!container) return;
 
-    container.innerHTML = ''; // Clear loader
+    // Clear skeletons
+    container.innerHTML = ''; 
 
     if(cards.length === 0) {
         container.innerHTML = `<div class="col-span-full text-center text-gray-500 py-10">No config.js files found in /data</div>`;
         return;
     }
 
-    // Generate Cards
+    // Generate Cards with opacity-0 for staggering
     cards.forEach(card => {
         const iconSvg = ICONS[card.icon] || ICONS['default'];
         const num = String(card.order).padStart(2, '0');
 
         const html = `
-        <a href="engine/${card.engine}.html?subject=${card.subject}&level=${card.level}&set=1" class="version-card group relative block border border-gray-800 rounded-2xl p-8 text-center cursor-pointer no-underline overflow-hidden">
+        <a href="engine/${card.engine}.html?subject=${card.subject}&level=${card.level}&set=1" 
+           class="version-card opacity-0 group relative block border border-gray-800 rounded-2xl p-8 text-center cursor-pointer no-underline overflow-hidden">
             <div class="absolute top-0 right-0 p-4 opacity-10 font-black text-6xl text-gray-500 group-hover:text-gold-500 transition-colors">${num}</div>
             <div class="icon-box w-14 h-14 rounded-xl bg-gray-900 text-gold-500 border border-gray-700 flex items-center justify-center mx-auto mb-6 text-xl font-bold shadow-lg">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">${iconSvg}</svg>
@@ -99,19 +104,31 @@ function renderGrid(cards) {
 
     // Append Placeholder
     const placeholder = `
-    <div class="version-card group relative block border border-gray-800 rounded-2xl p-8 text-center opacity-50 cursor-not-allowed">
+    <div class="version-card opacity-0 group relative block border border-gray-800 rounded-2xl p-8 text-center opacity-50 cursor-not-allowed">
         <h3 class="text-xl font-bold text-gray-600 mb-2">More Coming Soon...</h3>
     </div>
     `;
     container.insertAdjacentHTML('beforeend', placeholder);
+
+    // TRIGGER STAGGER ANIMATION
+    UX.staggerElements('.version-card', 70);
 }
 
 // 5. BOOTSTRAP
 (async () => {
     try {
+        // Show Skeletons IMMEDIATELY
+        const container = document.getElementById('card-grid');
+        if(container) container.innerHTML = Array(6).fill(UX.Skeletons.getCardSkeleton()).join('');
+        
+        UX.ProgressBar.start(); // Start illusion
+
         const cards = await scanLibrary();
         renderGrid(cards);
+        
+        UX.ProgressBar.finish(); // Finish illusion
     } catch(err) {
         console.error("Auto-discovery failed:", err);
+        UX.ProgressBar.finish();
     }
 })();

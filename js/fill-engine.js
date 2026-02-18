@@ -1,4 +1,4 @@
-import { Sound, Effects, injectHeader, injectFooter, injectMenu, getParams, discoverSets } from './ui.js';
+import { Sound, Effects, injectHeader, injectFooter, injectMenu, getParams, discoverSets, UX } from './ui.js';
 
 let allQuestions = [];
 let displayQuestions = [];
@@ -9,7 +9,12 @@ async function init() {
     const { topic, level, set } = getParams();
     currentSetId = set;
     
-    // 1. Load Config for Header Control
+    // 1. Start Progress & Show Skeletons
+    UX.ProgressBar.start();
+    const container = document.getElementById('quiz-container');
+    container.innerHTML = Array(5).fill(UX.Skeletons.getQuestionSkeleton()).join('');
+
+    // 2. Load Config
     let config = {};
     try {
         const configModule = await import(`../data/${topic}/${level}/config.js`);
@@ -18,7 +23,7 @@ async function init() {
         console.error("Config not found, using defaults");
     }
 
-    // 2. Inject Header with Config Values or Fallbacks
+    // 3. Inject Header
     injectHeader(
         config.headerTitle || topic.replace(/-/g, ' '), 
         `${config.headerSubtitlePrefix || "By Chiranjibi Sir"} • ${level.toUpperCase()} • SET ${set}`
@@ -26,20 +31,25 @@ async function init() {
 
     injectFooter();
     
-    // 3. Discover Sets
+    // 4. Discover Sets
     availableSets = await discoverSets(topic, level);
 
+    // 5. Load Data
     const url = `../data/${topic}/${level}/set${set}.json`;
     try {
+        UX.prefetchNextSet(topic, level, set);
+        
         const res = await fetch(url);
         if(!res.ok) throw new Error("Set not found");
         allQuestions = await res.json();
         displayQuestions = [...allQuestions];
         setupMenu();
         render();
+        UX.ProgressBar.finish();
     } catch(e) {
         document.getElementById('quiz-container').innerHTML = `<div class="text-center py-20 text-slate-500 font-bold">Failed to load: ${url}<br>${e.message}</div>`;
         setupMenu();
+        UX.ProgressBar.finish();
     }
 }
 
@@ -49,20 +59,25 @@ function setupMenu() {
         availableSets, 
         (newSet) => {
             const { topic, level } = getParams();
+            UX.ProgressBar.start();
             window.location.href = `?subject=${topic}&level=${level}&set=${newSet}`;
         },
         (filterType) => {
+            UX.ProgressBar.start();
             if(filterType === 'odd') displayQuestions = allQuestions.filter((_, i) => (i + 1) % 2 !== 0);
             if(filterType === 'even') displayQuestions = allQuestions.filter((_, i) => (i + 1) % 2 === 0);
             render();
             closeMenu();
+            UX.ProgressBar.finish();
         },
         (count) => {
+            UX.ProgressBar.start();
             const c = parseInt(count) || 10;
             const shuffled = [...allQuestions].sort(() => 0.5 - Math.random());
             displayQuestions = shuffled.slice(0, c);
             render();
             closeMenu();
+            UX.ProgressBar.finish();
         }
     );
 }
@@ -79,8 +94,8 @@ function render() {
         const displayNum = i + 1;
 
         const card = document.createElement('div');
-        // CHANGED: Reduced 'mb-4' to 'mb-1' to tighten spacing
-        card.className = "bg-[#1e293b] rounded-xl border border-slate-700/50 shadow-lg overflow-hidden break-inside-avoid inline-block w-full mb-1";
+        // Added opacity-0 and animation class
+        card.className = "opacity-0 fill-card-entry bg-[#1e293b] rounded-xl border border-slate-700/50 shadow-lg overflow-hidden break-inside-avoid inline-block w-full mb-1";
         card.setAttribute('data-answered', 'false');
         
         const qContent = document.createElement('div');
@@ -119,14 +134,24 @@ function render() {
         card.appendChild(qContent);
         container.appendChild(card);
     });
+
+    // TRIGGER STAGGER ANIMATION
+    UX.staggerElements('.fill-card-entry', 80);
 }
 
 function handleAnswer(btn, optObj, blankId, container, card) {
     if (card.getAttribute('data-answered') === 'true') return;
 
+    // Visual feedback immediately
+    btn.style.transform = "scale(0.95)";
+
     if (optObj.isCorrect) {
-        // CORRECT
-        btn.className = "px-3 py-1 rounded-full border border-emerald-500 bg-emerald-500/20 text-emerald-400 font-bold text-sm shadow-[0_0_15px_rgba(16,185,129,0.4)] animate-pop pointer-events-none align-middle";
+        // CORRECT: Instant
+        Sound.playCorrect();
+        Effects.triggerConfetti();
+
+        btn.className = "px-3 py-1 rounded-full border border-emerald-500 bg-emerald-500/20 text-emerald-400 font-bold text-sm shadow-[0_0_15px_rgba(16,185,129,0.4)] animate-pop pointer-events-none align-middle transition-all";
+        
         const blank = document.getElementById(blankId);
         if (blank) {
             blank.textContent = optObj.text;
@@ -135,7 +160,7 @@ function handleAnswer(btn, optObj, blankId, container, card) {
         }
         card.setAttribute('data-answered', 'true');
         
-        // Disable siblings only on correct answer
+        // Disable siblings
         const siblings = container.querySelectorAll('button');
         siblings.forEach(b => {
             if (b !== btn) {
@@ -143,13 +168,15 @@ function handleAnswer(btn, optObj, blankId, container, card) {
                 b.classList.add('opacity-50', 'cursor-not-allowed');
             }
         });
-        Sound.playCorrect();
-        Effects.triggerConfetti();
+        
     } else {
-        // WRONG - Only style/disable this specific wrong button, don't lock card
-        btn.className = "px-3 py-1 rounded-full border border-red-500 bg-red-500/20 text-red-400 font-semibold text-sm animate-shake align-middle cursor-not-allowed";
-        btn.disabled = true;
-        Sound.playWrong();
+        // WRONG: Slight delay
+        setTimeout(() => {
+            Sound.playWrong();
+            btn.className = "px-3 py-1 rounded-full border border-red-500 bg-red-500/20 text-red-400 font-semibold text-sm animate-shake align-middle cursor-not-allowed";
+            btn.disabled = true;
+            btn.style.transform = "scale(1)";
+        }, 150);
     }
 }
 

@@ -30,7 +30,134 @@ if (typeof tailwind !== 'undefined') {
     };
 }
 
-// --- 2. GLOBAL STATE ---
+// --- 2. GLOBAL UX STYLES & ANIMATIONS ---
+const uxStyle = document.createElement('style');
+uxStyle.textContent = `
+    /* Shimmer Effect for Skeletons */
+    @keyframes shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+    }
+    .skeleton-shimmer {
+        background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite linear;
+    }
+    
+    /* Staggered Entrance Animation */
+    @keyframes slideUpFade {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-enter {
+        animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        opacity: 0; /* Start hidden */
+        will-change: transform, opacity;
+    }
+
+    /* Progress Bar */
+    #nprogress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: #EAB308;
+        z-index: 9999;
+        transition: width 0.3s ease-out, opacity 0.3s ease;
+        box-shadow: 0 0 10px #EAB308;
+        pointer-events: none;
+    }
+`;
+document.head.appendChild(uxStyle);
+
+// --- 3. UX UTILITIES (NEW) ---
+export const UX = {
+    // Progress Bar Psychology
+    ProgressBar: {
+        element: null,
+        init() {
+            if (!this.element) {
+                this.element = document.createElement('div');
+                this.element.id = 'nprogress-bar';
+                this.element.style.width = '0%';
+                this.element.style.opacity = '0';
+                document.body.appendChild(this.element);
+            }
+        },
+        start() {
+            this.init();
+            this.element.style.opacity = '1';
+            this.element.style.width = '0%';
+            // Jump to 40% immediately, then trickle
+            requestAnimationFrame(() => {
+                this.element.style.width = '40%';
+                setTimeout(() => { if(this.element.style.width !== '100%') this.element.style.width = '80%'; }, 500);
+            });
+        },
+        finish() {
+            if (!this.element) return;
+            this.element.style.width = '100%';
+            setTimeout(() => {
+                this.element.style.opacity = '0';
+                setTimeout(() => { this.element.style.width = '0%'; }, 300);
+            }, 300);
+        }
+    },
+
+    // Skeleton Generators
+    Skeletons: {
+        getCardSkeleton() {
+            return `
+            <div class="border border-slate-800 rounded-2xl p-8 text-center relative overflow-hidden bg-slate-900/30">
+                <div class="skeleton-shimmer absolute inset-0 opacity-10"></div>
+                <div class="w-14 h-14 rounded-xl bg-slate-800 mx-auto mb-6 skeleton-shimmer"></div>
+                <div class="h-6 w-3/4 bg-slate-800 mx-auto mb-3 rounded skeleton-shimmer"></div>
+                <div class="h-4 w-1/2 bg-slate-800 mx-auto rounded skeleton-shimmer"></div>
+            </div>`;
+        },
+        getQuestionSkeleton() {
+            return `
+            <div class="bg-[#1e293b] rounded-xl border border-slate-700/50 p-5 mb-4 relative overflow-hidden">
+                <div class="skeleton-shimmer absolute inset-0 opacity-5"></div>
+                <div class="flex gap-4 mb-6">
+                    <div class="w-10 h-8 rounded-lg bg-slate-700 skeleton-shimmer shrink-0"></div>
+                    <div class="flex-1 space-y-2">
+                        <div class="h-4 w-full bg-slate-700 rounded skeleton-shimmer"></div>
+                        <div class="h-4 w-3/4 bg-slate-700 rounded skeleton-shimmer"></div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="h-12 bg-slate-700 rounded-lg skeleton-shimmer"></div>
+                    <div class="h-12 bg-slate-700 rounded-lg skeleton-shimmer"></div>
+                    <div class="h-12 bg-slate-700 rounded-lg skeleton-shimmer"></div>
+                    <div class="h-12 bg-slate-700 rounded-lg skeleton-shimmer"></div>
+                </div>
+            </div>`;
+        }
+    },
+
+    // Background Prefetching
+    prefetchNextSet(topic, level, currentSet) {
+        const nextSet = parseInt(currentSet) + 1;
+        const url = `../data/${topic}/${level}/set${nextSet}.json`;
+        if (window.requestIdleCallback) {
+            requestIdleCallback(() => fetch(url, { priority: 'low' }).catch(() => {}));
+        } else {
+            setTimeout(() => fetch(url).catch(() => {}), 2000);
+        }
+    },
+
+    // Staggered Reveal Helper
+    staggerElements(selector, baseDelay = 50) {
+        const els = document.querySelectorAll(selector);
+        els.forEach((el, index) => {
+            el.style.animationDelay = `${index * baseDelay}ms`;
+            el.classList.add('animate-enter');
+        });
+    }
+};
+
+// --- 4. GLOBAL STATE ---
 const UI_STATE = {
     sound: true,
     confetti: true,
@@ -38,26 +165,22 @@ const UI_STATE = {
     isMenuOpen: false
 };
 
-// --- 3. HELPER: SET DISCOVERY ---
-// Scans for set1.json, set2.json, etc. until a 404 occurs.
+// --- 5. HELPER: SET DISCOVERY ---
 export async function discoverSets(topic, level) {
     const sets = [];
     let current = 1;
     let keepLooking = true;
-    const MAX_SAFETY_LIMIT = 50; // Prevent infinite loops if server misbehaves
+    const MAX_SAFETY_LIMIT = 50; 
 
     while (keepLooking && current <= MAX_SAFETY_LIMIT) {
         try {
-            // Using HEAD request is lighter, but simple fetch is more robust on some static hosts
             const url = `../data/${topic}/${level}/set${current}.json`;
             const response = await fetch(url, { method: 'HEAD' });
             
-            // Fallback for servers that don't support HEAD or return 405
             if (response.status === 405 || response.status === 404) {
                  if (response.status === 404) {
                      keepLooking = false;
                  } else {
-                     // If 405 (Method Not Allowed), try GET
                      const getRes = await fetch(url);
                      if (getRes.ok) sets.push(current);
                      else keepLooking = false;
@@ -68,18 +191,16 @@ export async function discoverSets(topic, level) {
                 keepLooking = false;
             }
         } catch (e) {
-            // Network error or offline usually means stop
             keepLooking = false;
         }
         
         if (keepLooking) current++;
     }
 
-    // Always return at least set 1 to prevent UI crash if discovery fails completely
     return sets.length > 0 ? sets : [1];
 }
 
-// --- 4. SOUND ENGINE ---
+// --- 6. SOUND ENGINE ---
 function initAudio() {
     if (!UI_STATE.audioCtx) {
         UI_STATE.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -142,10 +263,9 @@ export const Effects = {
     }
 };
 
-// --- 5. APP SHELL INJECTION (Header + Menu Assembly) ---
+// --- 7. APP SHELL INJECTION (Header + Menu Assembly) ---
 
 export function injectHeader(title, subtitle) {
-    // Inject Custom Scrollbar CSS for Menu
     const style = document.createElement('style');
     style.textContent = `
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
@@ -197,13 +317,12 @@ export function injectHeader(title, subtitle) {
                         <svg class="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
                     </a>
 
-                    <!-- MENU TOGGLE (Responsive: Gear on small, TOOLS on large) -->
+                    <!-- MENU TOGGLE -->
                     <button id="menu-toggle-btn" class="group flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 xs:px-3 xs:py-2 sm:px-5 sm:py-2.5 bg-slate-800 border border-slate-700 rounded-lg hover:border-blue-500 hover:bg-slate-700 transition-all shrink-0 shadow-lg cursor-pointer">
                         <span class="text-[10px] xs:text-xs sm:text-sm font-bold text-slate-300 group-hover:text-white tracking-wide">
                             <span class="sm:hidden text-lg">⚙</span>
                             <span class="hidden sm:inline">TOOLS</span>
                         </span>
-                        <!-- CHANGED: Added 'hidden sm:block' to hide arrow on mobile -->
                         <svg class="hidden sm:block h-3.5 w-3.5 sm:h-5 sm:w-5 text-slate-400 group-hover:text-blue-400 transition-transform duration-300" id="menu-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg>
@@ -227,11 +346,9 @@ export function injectHeader(title, subtitle) {
 
     document.getElementById('header-mount').innerHTML = html;
 
-    // Attach Basic Listeners
     document.getElementById('btn-sound').onclick = function () { Effects.toggleSound(this); };
     document.getElementById('btn-confetti').onclick = function () { Effects.toggleConfetti(this); };
 
-    // Attach Menu Logic
     initMenuSystem();
 }
 
@@ -280,11 +397,9 @@ function initMenuSystem() {
     window.closeAppMenu = closeMenu;
 }
 
-// Accepts activeSets as an ARRAY of integers e.g. [1, 2, 3]
 export function injectMenu(currentSet, activeSets, onSetClick, onFilter, onRandom) {
     let setButtonsHtml = '';
     
-    // Sort just in case
     activeSets.sort((a, b) => a - b);
 
     activeSets.forEach(i => {
@@ -329,7 +444,6 @@ export function injectMenu(currentSet, activeSets, onSetClick, onFilter, onRando
                         <span>GENERATE</span>
                     </button>
                 </div>
-                <!-- CHANGED: Added 'hidden md:block' to hide on mobile -->
                 <p class="hidden md:block text-[10px] md:text-xs text-slate-500 font-medium leading-relaxed">
                     Generates a unique test from the entire pool of questions. Options are automatically shuffled.
                 </p>
@@ -340,7 +454,6 @@ export function injectMenu(currentSet, activeSets, onSetClick, onFilter, onRando
 
     document.getElementById('menu-content').innerHTML = html;
 
-    // Attach Logic
     document.querySelectorAll('.btn-set').forEach(btn => {
         btn.onclick = () => {
             if (window.closeAppMenu) window.closeAppMenu();
