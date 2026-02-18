@@ -3,7 +3,7 @@ if (typeof tailwind !== 'undefined') {
     tailwind.config = {
         theme: {
             extend: {
-                fontFamily: { sans: ['Inter', 'sans-serif'] },
+                fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Times New Roman', 'serif'] },
                 screens: { 'xs': '375px' },
                 colors: {
                     slate: { 850: '#1e293b', 900: '#0f172a', 950: '#020617' },
@@ -70,7 +70,154 @@ uxStyle.textContent = `
 `;
 document.head.appendChild(uxStyle);
 
-// --- 3. UX UTILITIES (NEW) ---
+// --- 3. PRINT PROTECTION MODULE (NEW) ---
+const PrintProtection = {
+    init() {
+        this.injectPrintCSS();
+        this.injectPrintDOM();
+        this.bindEvents();
+    },
+
+    injectPrintCSS() {
+        const style = document.createElement('style');
+        style.type = 'text/css';
+        style.media = 'print';
+        style.textContent = `
+            @page {
+                size: A4;
+                margin: 0;
+            }
+            body, html {
+                margin: 0 !important;
+                padding: 0 !important;
+                height: 100% !important;
+                width: 100% !important;
+                overflow: hidden !important;
+                background-color: #ffffff !important;
+            }
+            /* Hide EVERYTHING else */
+            body > *:not(#official-print-notice) {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+            }
+            /* Show Notice */
+            #official-print-notice {
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                width: 100vw;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 2147483647; /* Max Z-Index */
+                background: white;
+                border: 20px solid white;
+                box-sizing: border-box;
+                font-family: 'Times New Roman', Times, serif;
+                color: #000;
+                text-align: center;
+            }
+            .pp-content-box {
+                border: 2px solid #000;
+                padding: 40px;
+                width: 80%;
+                max-width: 600px;
+                position: relative;
+                background: white;
+                z-index: 2;
+            }
+            .pp-watermark {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-45deg);
+                font-size: 60px;
+                font-weight: bold;
+                color: rgba(0,0,0,0.03);
+                white-space: nowrap;
+                z-index: 1;
+                pointer-events: none;
+                user-select: none;
+            }
+            .pp-header h1 { font-size: 28px; font-weight: bold; margin: 0 0 5px 0; letter-spacing: 1px; }
+            .pp-header h2 { font-size: 18px; font-weight: bold; margin: 0 0 25px 0; color: #444; }
+            .pp-message { margin-bottom: 30px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; padding: 20px 0; }
+            .pp-warn { font-size: 16px; font-weight: bold; color: #dc2626; margin-bottom: 10px; text-transform: uppercase; }
+            .pp-info { font-size: 14px; color: #333; line-height: 1.5; }
+            .pp-contact { text-align: left; font-size: 13px; margin: 0 auto; width: fit-content; line-height: 1.8; }
+            .pp-contact strong { display: inline-block; width: 90px; color: #000; }
+            .pp-footer { margin-top: 30px; font-size: 10px; color: #666; font-style: italic; }
+            .pp-credit { margin-top: 5px; font-weight: bold; color: #999; }
+        `;
+        document.head.appendChild(style);
+    },
+
+    injectPrintDOM() {
+        const div = document.createElement('div');
+        div.id = 'official-print-notice';
+        div.setAttribute('aria-hidden', 'true');
+        div.innerHTML = `
+            <div class="pp-watermark">ENGLISHJIBI CLASSES</div>
+            <div class="pp-content-box">
+                <div class="pp-header">
+                    <h1>ENGLISHJIBI CLASSES</h1>
+                    <h2>CHIRANJIBI SIR</h2>
+                </div>
+                <div class="pp-message">
+                    <p class="pp-warn">This content is protected.<br>Direct browser printing is disabled.</p>
+                    <p class="pp-info">To obtain an official formatted PDF,<br>please contact:</p>
+                </div>
+                <div class="pp-contact">
+                    <div><strong>📞 Phone:</strong> +91 83289 22917 / +91 77358 12335</div>
+                    <div><strong>📱 WhatsApp:</strong> +91 83289 22917</div>
+                    <div><strong>📧 Email:</strong> rangoclasses@gmail.com</div>
+                    <div><strong>📍 Address:</strong> Duplex 37, Sailashree Vihar<br><span style="margin-left:90px">Bhubaneswar – 751021</span></div>
+                </div>
+                <div class="pp-footer">
+                    <p>Official PDFs are generated through EnglishJibi Authorized System.</p>
+                    <p class="pp-credit">Website Designed & Developed by Subham Kumar Mallick</p>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(div);
+    },
+
+    bindEvents() {
+        // Intercept Keyboard Shortcuts
+        window.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && (e.key === 'p' || e.key === 'P')) {
+                // We allow the print dialog to open, but the CSS will restrict what is seen.
+                // This is less intrusive than blocking it entirely, which browsers often prevent.
+                // However, we can focus the notice logic.
+                console.log('Print attempt detected. Protection active.');
+            }
+        });
+
+        // Intercept window.print
+        const originalPrint = window.print;
+        window.print = function() {
+            console.log('Direct print called. Protection active.');
+            originalPrint();
+        };
+    }
+};
+
+// Initialize Print Protection Immediately
+if (typeof window !== 'undefined') {
+    // Wait for DOM
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => PrintProtection.init());
+    } else {
+        PrintProtection.init();
+    }
+}
+
+// --- 4. UX UTILITIES ---
 export const UX = {
     // Progress Bar Psychology
     ProgressBar: {
@@ -157,7 +304,7 @@ export const UX = {
     }
 };
 
-// --- 4. GLOBAL STATE ---
+// --- 5. GLOBAL STATE ---
 const UI_STATE = {
     sound: true,
     confetti: true,
@@ -165,7 +312,7 @@ const UI_STATE = {
     isMenuOpen: false
 };
 
-// --- 5. HELPER: SET DISCOVERY ---
+// --- 6. HELPER: SET DISCOVERY ---
 export async function discoverSets(topic, level) {
     const sets = [];
     let current = 1;
@@ -200,7 +347,7 @@ export async function discoverSets(topic, level) {
     return sets.length > 0 ? sets : [1];
 }
 
-// --- 6. SOUND ENGINE ---
+// --- 7. SOUND ENGINE ---
 function initAudio() {
     if (!UI_STATE.audioCtx) {
         UI_STATE.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -263,7 +410,7 @@ export const Effects = {
     }
 };
 
-// --- 7. APP SHELL INJECTION (Header + Menu Assembly) ---
+// --- 8. APP SHELL INJECTION (Header + Menu Assembly) ---
 
 export function injectHeader(title, subtitle) {
     const style = document.createElement('style');
